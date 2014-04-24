@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Make Your Browser Dance</title>
+
+		<meta name="description" content="A talk about animation and audio">
+		<meta name="author" content="Ruth John">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../css/reveal.min.css">
+		<link rel="stylesheet" href="../css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<section>
+						<h1>Make Your Browser Dance</h1>
+						<!--all the single ladies gif-->
+					</section>
+
+					<section>
+						<h2>Hello</h2>
+						<p class="fragment roll-in">I'm Ruth</p>
+						<p class="fragment roll-in">UX, Design, Front End Dev</p>
+						<p class="fragment roll-in">@rumyra</p>
+						<p class="fragment roll-in">Work in The Lab at O2</p>
+						<aside class="notes">
+							What we do in the Lab - Proof of Concept
+						</aside>
+					</section>
+
+					<!--<section>
+						<h2><del>Happy New Year!</del></h2>
+						<aside class="notes">
+							Too late?
+							February
+							2014!!
+							I left uni 10 years ago - 10 years ago...
+							That means it was ten years since this ->
+						</aside>
+					</section>-->
+
+					<section>
+						<h2>Winamp</h2>
+						<audio controls>
+							<source src="media/llama.mp3" type="audio/mp3" />
+						</audio>
+						<img src="/media/WinAmp.gif" />
+						<aside class="notes">
+							Winamp was the mp3 player of choice
+							We're talking back when Napster was illegal
+							Visualizer
+							Sit for hours
+						</aside>
+					</section>
+
+					<section>
+						<video autoplay style="width:100%;height:100%;"
+ src="media/VISUALIZATION_EFFECT__without_sound__medium.mp4" />
+ 						<aside class="notes">
+ 							Winamp visualise inspired me - I used to go into clubs & venues with projector.
+ 						</aside>
+					</section>
+
+					<section>
+						<h2>My name is Ruth and I am a VJ</h2>
+						<blockquote>
+							&ldquo;VJing is a broad designation for realtime visual performance&rdquo; - Wikipedia
+						</blockquote>
+						<aside class="notes">
+							Used a piece of software called Visual Jockey
+							Line in of the sound - band, dj
+							Software detected frequencies. Beat, bass - 
+							Imported/created visuals - images, 3d models, video clips
+							Used analysed values to animate visuals
+							Much like the winamp visualiser.
+						</aside>
+					</section>
+
+					<section>
+						<h2>I was thinking</h2>
+						<p class="fragment roll-in">CSS Animations</p>
+						<p class="fragment roll-in">Web Audio API (+ others)</p>
+						<p class="fragment roll-in">Can we recreate my old uni days?</p>
+						<aside class="notes">
+							As I was getting nostagic...
+							I started thinking about the technology we have now
+							
+							For the past ten years I've bene engrossed with designing website layouts, more recently apps - all pretty static, coding html & css, 
+
+							I had left my VJing days behind.
+							
+							Then we got CSS animations
+							And a web audio API
+							
+							Suddenly I thoguht to myself - is it now possible - let's find out
+
+							What do we need for POC
+						</aside>
+					</section>
+
+					<section>
+						<h2>Two Things</h2>
+						<p class="fragment roll-in">Moving visual</p>
+						<p class="fragment roll-in">Analysed sound wave</p>
+						<aside class="notes">
+							My minimum requirements are:
+							Moving visual - an animation if you will
+							Sound wave - which I can detect frequencies from
+							Let's start with the moving visual - for this I want to use CSS animations.
+							Mention SVG & Canvas & CSS transitions
+							SVG - some animatable
+							Canvas - Just like the idea of CSS animations
+							CSS transitions - not as much control
+						</aside>
+					</section>
+
+					<!--<section>
+						<h2>The Briefest History of Animation</h2>
+						<img style="width:540px;height:auto;" src="images/Egyptmotionseries.jpg" />
+						<aside class="notes">
+							OLD
+							CAVE
+							EGYPT PAINTING FRAMES MOVEMENT
+							IRAN
+							WRESTLING
+							Animation is old
+							Cave paintings showed animals with multiple leg positions - debatable but probably to show motion
+							Artifacts have been recovered from both Egypt and Iran depicting sucessive images which as you can see show motion.
+							If you're wondering - this is known to be soldiers wrestling
+						</aside>
+					</section>
+
+					<section class="divs">
+						<h2>19th Century</h2>
+						<h5>Thaumatrope (1824)</h5>
+						<img src="images/Thaumatrope.gif" style="width:540px;height:auto;" />
+						<aside class="notes">
+							Thaumatrope - disc with string, wound up and spun - 2 images or frames
+						</aside>
+					</section>
+
+					<section>
+						<h2>19th Century</h2>
+						<h5>Phenakistoscope (1831)</h5>
+						<img src="images/Phenakistoscope.gif" style="width:540px;height:auto;" />
+						<aside class="notes">
+							Phenakistrope - disk with more images, slits in disk - held in front of a mirror and spun whilst looking through slits
+						</aside>
+					</section>
+
+					<section>
+						<h2>19th Century</h2>
+						<h5>Zoetrope (1834)</h5>
+						<img src="images/Zoetrope.jpg" style="width:540px;height:auto;" />
+						<p>Photo by Andrew Dunn, http://andrewdunnphoto.com</p>
+						<aside class="notes">
+							Zoetrope - like Phenakistrope just in a bowl like cylinder
+						</aside>
+					</section>
+
+					<section>
+						<h2>19th Century</h2>
+						<h5>Flipbooks (1868)</h5>
+						<img src="images/flipbook.gif" style="width:540px;height:auto;" />
+						<p>Keith Haring Flip-Book, http://www.haring.com/</p>
+					</section>
+
+					<section>
+						<h2>20th Century</h2>
+						<p class="fragment roll-in">Celluloid</p>
+						<p class="fragment roll-in">Cartoons</p>
+						<p class="fragment roll-in">Stop Motion</p>
+						<p class="fragment roll-in">Computer / 3D / CGI</p>
+
+						<aside class="notes">
+							Cellyloid - invented in the 19th century but popular in early 20th - upraising of cameras.
+							Early cartoons drawings on papar that were photographed
+							Let's not forget Stop Motion animation - most famous Wallace & Gromit
+							All these methods rely on frames
+						</aside>
+					</section>
+
+					<section>
+						<h2>Frames</h2>
+						<p>Everything is frame based</p>
+						<p><b>Keyframes</b> & <b>tweening</b></p>
+						<aside class="notes">
+							EXPLAIN KEYFRAMES AND TWEENING
+							All digital animation is based upon this - flash, photoshop gifs, video editing, 3D animation.
+							And so is CSS animation
+							Like this: Show ball
+						</aside>
+					</section>-->
+
+					<section>
+						<style>
+
+						@-webkit-keyframes flashing {
+						  0%   { opacity: 0; }
+						  50%   { opacity: 1; }
+						  100% { opacity: 0; }
+						}
+
+						.lights {
+							position:relative;
+						  width:100%; height:600px;
+						  background-color:black;
+						}
+						.lights i {
+						  display:block;
+						  position:absolute; top:48%; left:48%;
+						  width:30px; height:30px;
+						  background-color:hsla(200, 80%, 50%, 0.8);
+						  border:10px solid hsla(200, 80%, 50%, 1);
+						  border-radius:2px;
+						  /*call animation*/
+						  -webkit-animation:flashing 2s infinite;
+						}
+						</style>
+						<div class="lights">
+							<i id="onelight"></i>
+						</div>
+						<aside class="notes">
+							
+						</aside>
+					</section>
+
+				<section>
+					<h2>Creating CSS Animation</h2>
+					<pre><code data-trim contenteditable>
+@keyframes flashing {
+  0%   { opacity: 0; }
+  50%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.lights i {
+	animation:flashing 2s infinite;
+}
+					</code></pre>
+					<h3>You'll need vendor prefixes :)</h3>
+					<p>List of animatable properties: <a href="http://oli.jp/2010/css-animatable-properties/">http://oli.jp/2010/css-animatable-properties/</a></p>
+					<aside class="notes">
+						Declare animation using @keyframe directive
+						Keyframes - pecentages or beg & end with 'from' 'to'
+						Call animation under style for element
+						Vendor prefixes
+						Lots of animatable properties - fonts, borders, backgrounds, prositioning
+						List
+						You can go mad with CSS animation today ->
+					</aside>
+				</section>
+
+				<!--<section>
+					<h2>Calling your animation</h2>
+					<pre><code data-trim contenteditable>
+.light {animation : flashingLight 2s infinite ease-out;}
+</code></pre>
+<p>or</p>
+<pre><code data-trim contenteditable>
+.light {
+	animation-name: flashingLight;
+	animation-duration: 2s; /*Can be ms*/
+	animation-iteration-count: infinite; /*Or integer*/
+	animation-direction: normal; /*normal, alternate*/
+	animation-timing-function: ease-out; /*ease, ease-out, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2)*/
+	animation-fill-mode: forwards; /*forwards, backwards, both, none*/
+	animation-delay: 0s; /*Can be ms*/
+}
+					</code></pre>
+					<p>Elements can have multiple animations, just comma separate list</p>
+					<h3><strong>Again vendor prefixes!</strong></h3>
+					<aside class="notes">
+						simple as adding animation property
+						Can declare each property separetely
+						Can have more than one animation on an element
+					</aside>
+				</section>-->
+
+				<section>
+					<style>
+					.pen {width:50%; height:50%; float:left;}
+					</style>
+					<h2>Go Mad</h2>
+
+					<div class="pen">
+						<p data-height="268" data-theme-id="1345" data-slug-hash="zhloq" data-user="maggiben" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Rumyra/pen/zhloq'>3D TagCloud </a> by Benjamin (<a href='http://codepen.io/maggiben'>@maggiben</a>) on <a href='http://codepen.io'>CodePen</a></p>
+						<script async src="http://codepen.io/assets/embed/ei.js"></script>
+					</div>
+					<div class="pen">
+						<p data-height="268" data-theme-id="1345" data-slug-hash="GcDgz" data-user="adrianosmond" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Rumyra/pen/GcDgz'>Hypnoswirl</a> by Adrian Osmond (<a href='http://codepen.io/adrianosmond'>@adrianosmond</a>) on <a href='http://codepen.io'>CodePen</a></p>
+						<script async src="http://codepen.io/assets/embed/ei.js"></script>
+					</div>
+					<div class="pen">
+						<p data-height="268" data-theme-id="1345" data-slug-hash="mcrLf" data-user="thebabydino" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Rumyra/pen/mcrLf'>Pure CSS Rainbow Animated Möbius Strip</a> by Ana Tudor (<a href='http://codepen.io/thebabydino'>@thebabydino</a>) on <a href='http://codepen.io'>CodePen</a></p>
+						<script async src="http://codepen.io/assets/embed/ei.js"></script>
+					</div>
+					<div class="pen">
+						<p data-height="268" data-theme-id="1345" data-slug-hash="aDikd" data-user="ataylor79" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Rumyra/pen/aDikd'>YATZEE!!!</a> by Alec Taylor (<a href='http://codepen.io/ataylor79'>@ataylor79</a>) on <a href='http://codepen.io'>CodePen</a></p>
+						<script async src="http://codepen.io/assets/embed/ei.js"></script>
+					</div>
+
+					<aside class="notes">
+						Tie in new 3D stuff
+						Listen to your computer take off!
+					</aside>
+				</section>
+
+				<!--<section>
+					<h2>I Mean Really</h2>
+					<iframe style="height:700px;width:1000px;background-color:white; border:4px solid hsla(200,10%,50%,0.5);" src="http://anthonycalzadilla.com/css3-ATAT/index.html"></iframe>
+				</section>-->
+
+				<section>
+					<style>
+					.lights i:nth-child(1) {top:100px; left:100px;}
+					.lights i:nth-child(2) {top:100px; left:200px;}
+					.lights i:nth-child(3) {top:100px; left:300px;}
+					.lights i:nth-child(4) {top:100px; left:400px;}
+					.lights i:nth-child(5) {top:100px; left:500px;}
+					.lights i:nth-child(6) {top:100px; left:600px;}
+					.lights i:nth-child(7) {top:100px; left:700px;}
+					.lights i:nth-child(8) {top:100px; left:800px;}
+					</style>
+					<h2>Expanding on the light</h2>
+					<div class="lights">
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+					</div>
+					<aside class="notes">
+						OK cool so we have animated visuals
+					</aside>
+				</section>
+
+				<!--<section>
+					<h2>Now For Some Sound</h2>
+					<p>Create new instance Web Audio API</p>
+					<pre><code data-trim contenteditable>
+var audioContext = (window.AudioContext || 
+window.webkitAudioContext || window.mozAudioContext);
+
+if (contextClass) {
+	// Web Audio API is available.
+	var myAudioContext = new audioContext();
+}
+					</code></pre>
+					<aside class="notes">
+						Initiate new instance of the audio class
+						Now audio class based around nodes
+					</aside>
+				</section>-->
+
+				<section>
+					<h2>Web Audio API</h2>
+					<p>It's magic!</p>
+					<p class="fragment roll-in">Based around nodes</p>
+					<p class="fragment roll-in">Source node -> sound you are loading in</p>
+					<p class="fragment roll-in">Output node -> where the sound wants to come out</p>
+					<aside class="notes">
+						Input node - sound in - usually file
+						Output node - sound out - usually speakers
+					</aside>
+				</section>
+
+				<!--<section>
+					<h2>Get Input Node</h2>
+					<p class="fragment roll-in">Load audio</p>
+					<p class="fragment roll-in">HTTP request</p>
+					<p class="fragment roll-in"><code>audio</code> element & <code>createMediaElementSource</code> method</p>
+					<aside class="notes">
+						The input node in this example is sound file
+						Load either with HTTP request or audio element
+					</aside>
+				</section>
+
+				<section>
+					<h2>Via HTTP Request</h2>
+					<pre><code data-trim contenteditable>
+function loadSound() {
+	var audioFileUrl = '/myFile.ogg';
+	var request = new XMLHttpRequest();
+	request.open("GET", audioFileUrl, true);
+	request.responseType = "arraybuffer";
+
+	request.onload = function() {
+		//take from http request and decode into buffer
+		myAudioContext.decodeAudioData(request.response, function(buffer) {
+	    	audioBuffer = buffer;
+	     });
+		}
+	request.send();
+}
+
+var source = myAudioContext.createBufferSource();
+					</code></pre>
+					<p class="fragment roll-in">Use <code>decodeAudioData</code> to parse audio into buffer for use.</p>
+					<aside class="notes">
+						Open HTTP request
+						Parsing data we receive back into a buffer.
+						Which we then need to pass into the buffer source which we create.
+						As appose to using the audio element ->
+					</aside>
+				</section>
+
+				<section>
+					<h2>Via <code>audio</code> Element</h2>
+					<pre><code data-trim contenteditable>
+//select audio element
+var audioElement = document.getElementById('soundFile');
+//creating source node
+var source = myAudioContext.createMediaElementSource(audioElement);
+</code></pre>
+					<aside class="notes">
+						We have a source, which we can do stuff with.
+					</aside>
+				</section>-->
+<!--18-->
+				<section>
+					<!-- cut out code -->
+					<h2>All The Things</h2>
+					<p class="fragment roll-in">Control volume</p>
+					<pre class="fragment roll-in"><code data-trim contenteditable>
+//Control volume
+myAudioContext.createGain();
+					</code></pre>
+
+					<p class="fragment roll-in">Create filters</p>
+					<pre class="fragment roll-in"><code data-trim contenteditable>
+//Create filter
+myAudioContext.createBiquadFilter();
+					</code></pre>
+
+					<p class="fragment roll-in">Create sound</p>
+					<pre class="fragment roll-in"><code data-trim contenteditable>
+//Create sound
+myAudioContext.createOscillator();
+					</code></pre>
+					<p class="fragment roll-in">The <a href="http://chimera.labs.oreilly.com/books/1234000001552/index.html">Web Audio API O'Reilly book</a> by Boris Smus is free to read online!</p>
+					<aside class="notes">
+						You can do lots of things with the web audio API.
+						Simple
+							start/stop
+							volume
+						More complex things like add filters to the wave form
+						You can even create your own sounds
+						THE O'REILLY BOOK IS FREE!
+						For my POC I want to focus on analysing the waveform ->
+					</aside>
+				</section>
+
+				<section>
+					<h2>Analysing</h2>
+					<p class="fragment roll-in">We can do that :D</p>
+					<pre class="fragment roll-in"><code data-trim contenteditable>
+//create instance
+var analyser = myAudioContext.createAnalyser();
+
+//get data
+analyser.getByteFrequencyData();
+analyser.getFloatFrequencyData();
+analyser.getByteTimeDomainData();
+					</code></pre>
+					<aside class="notes">
+						You can analyse an audio context using the web audio api by creating an analyser node
+						That then gives you methods for frequency and time data - brilliant just what we need
+						I want frequency
+					</aside>
+				</section>
+
+<!--				<section>
+					<h2>A Little Theory</h2>
+					<img class="fragment roll-in" src="media/soundwave.gif" />
+					<p class="fragment roll-in">Image by University of Utah, http://gslc.genetics.utah.edu</p>
+					<aside class="notes">
+						What is frequency - let's go over
+						Waves travel through the air compressing and expanding areas or particles
+						This can be illustrated by drawing a wave
+						SHOW
+						Amplitude (volume) is strength of pressure, fequency is just what it says - how frequent these particles are being pushed.
+						As we have a digital file, these values have already been saved for us in a processed format, from what's in the air to binary on disk
+						We need to access tha information - which is what the methods on the analyser node will do for us.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Collecting Data</h2>
+					<p class="fragment roll-in">Javascript typed array to pass in data</p>
+					<p class="fragment roll-in">Each array item reflects a frequency</p>
+					<p class="fragment roll-in">The gain of that frequncy is the value that's passed into that item</p>
+					<pre class="fragment roll-in"><code data-trim contenteditable>var frequencyData = new Uint8Array(1024);</code></pre>
+					<p class="fragment roll-in">Know your frequency range by your file sample rate - it's half</p>
+						<aside class="notes">
+							need array to pass what's returned with getFrequencyByteData
+							a javascript typed array is ideal
+							The more items in the array the more frequencies 
+							Know your file frequency range by it's sample rate - sure we've all heard of 41k mp3s or 48k - this is a range of 48,000hz - ?don't forget that you have a plus and minus, so the frequency range is half sample range? - ie 24,000hz due to niquest theorem?
+							If you create an array with 24 items, first item will give you the gain at 1000hz, teh second at 2000 hz and so on.
+							1024 items gives us a sample of frequencies at 23.44hx apart - that's a nice resolution
+							HARD WORK DONE - relax
+						</aside>
+				</section>-->
+
+				<section>
+					<h2>More magic (& some code)</h2>
+					<!--<p class="fragment roll-in">Use <code>requestAnimationFrame</code> to call the analyser</p>
+					<p class="fragment roll-in">Get data and control the CSS animation</p>
+					<pre class="fragment roll-in"><code data-trim contenteditable>
+element.style.animationPlayState = "paused";
+element.style.animationPlayState = "running";
+					</code></pre>-->
+					<p>Loop through our lights, match them to a frequency and set them alight</p>
+					<pre>
+//get light elements
+var lights = document.getElementsByTagName('i');
+var totalLights = lights.length;
+
+for (var i=0; i<totalLights; i){
+	var freqDataKey = i*8;
+  if (frequencyData[freqDataKey] > 160){
+    lights[i].style.opacity = "1";
+  } else {
+    lights[i].style.opacity = "0.2";
+  }
+}
+					</pre>
+					<aside class="notes">
+						Use requestAnimationFrame (I prefer it to setinterval or settimeout)
+						Control CSS animation - animation play state not the best way - may have a really long animation control frames in the middle of
+						Just changed opacity with js for the demo
+						A bit like this - demo 1
+					</aside>
+				</section>
+
+				<!--<section>
+					<h2>Real Sound</h2>
+					<p class="fragment roll-in">Let's make it bigger!</p>
+					<p class="fragment roll-in">We need environment audio</p>
+					<p class="fragment roll-in">No line in functionality</p>
+					<p class="fragment roll-in">Hello <code>getUserMedia</code></p>
+					<pre class="fragment roll-in"><code data-trim contenteditable>
+var mediaStreamSource = myAudioContext.createMediaStreamSource(stream);
+					</code></pre>
+					<aside class="notes">
+						Let's make it better - let's put in a proper audio track and lots more lights, more lights = more frequencies!
+						DEMO
+						But we're in a venue - the audio we really want to come from what's playing
+						No line in functionality
+						hello getUserMedia
+						As long as I have my laptop I have a mic
+						DEMO
+					</aside>
+				</section>-->
+
+				<section>
+					<h2>New web APIs</h2>
+					<p>Geolocation</p>
+					<p class="fragment roll-in">Web RTC</p>
+					<p class="fragment roll-in">getUserMedia</p>
+					<p class="fragment roll-in">Vibration API</p>
+					<p class="fragment roll-in">Ambient Light API</p>
+					<p class="fragment roll-in">Proximity</p>
+					<p class="fragment roll-in"><a href="https://wiki.mozilla.org/WebAPI">https://wiki.mozilla.org/WebAPI</p>
+					<aside class="notes">
+						All these demos are at dancing.rumyra.com
+					</aside>
+				</section>
+
+				<section>
+					<h2>See For Yourself</h2>
+					<p>Android device - latest Chrome or Firefox browser</p>
+					<p><a href="http://dancing.rumyra.com">http://dancing.rumyra.com/shake-n-track</a></p>
+					<p><a href="http://dancing.rumyra.com">http://dancing.rumyra.com/vibrate</a></p>
+					<aside class="notes">
+						All these demos are at dancing.rumyra.com
+					</aside>
+				</section>
+				
+				<!-- <section>
+					Whoop we did it - we can take a sound wave, get some data from it and use that to manipulate visuals - all in a browser.
+				</section> -->
+
+				<!--<section>
+					<h2>What's next?</h2>
+					<p class="fragment roll-in">Different visuals</p>
+					<p class="fragment roll-in">canvas, SVG & 3D</p>
+					<p class="fragment roll-in">Other web API's (e.g. Ambient Light, Vibration)</p>
+					<p class="fragment roll-in"><a href="http://dancing.rumyra.com/shake-n-track">dancing.rumyra.com/shake-n-track</a></p>
+					<aside class="notes">
+						So where can we go from here?
+						Dif Visuals
+						Canvas, SVG, 3D - already some awesome examples
+						Other Web API's
+						Vibration demos - firefox android
+					</aside>
+				</section>-->
+
+				<section>
+					<h2>Thank you</h2>
+					<p><a href="http://twitter.com/rumyra">@rumyra</a></p>
+					<p><a href="http://dancing.rumyra.com">dancing.rumyra.com</a></p>
+					<aside class="notes">
+						10 YEARS AGO
+						If you had said to me 10 years ago, that I could do what i was doing then, on a laptop, in a browser, using just code. I wouldn't have laughed at you - I probbaly would have cried a little. Yet I'm standing here doing excaltly that.
+
+						Fraction of what web apis do - get on the train - it's gonna be quite a ride.
+
+						Thank you very much for reminising with me and sharing my journey - I hope you've enjoyed it as much as I have.
+
+						Web apis can do - it's just about to kick off - I would get on the train before it does :)
+					</aside>
+				</section>
+
+				<section>
+					<h2>Useful Links</h2>
+					<ul>
+						<!-- <li><a href="http://oli.jp/2010/css-animatable-properties/">List of animatable properties</a></li> -->
+						<li><a href="http://dancing.rumyra.com">dancing.rumyra.com</a></li>
+						<li><a href="http://chimera.labs.oreilly.com/books/1234000001552/index.html">O'Reilly Audio API Book by Boris Smus</a></li>
+						<li><a href="http://jsantell.github.io/dancer.js/">dancer.js</a></li>
+					</ul>
+				</section>
+			</secion>
+
+				
+
+			</div>
+
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				// theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				theme: 'sky',
+				// transition: Reveal.getQueryHash().transition || 'default',
+				// default/cube/page/concave/zoom/linear/fade/none
+				transition: 'fade',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
