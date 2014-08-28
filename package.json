@@ -10,13 +10,13 @@
     "postinstall": "grunt serve"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
+    "name": "Ruth John",
+    "email": "rumyra@gmail.com",
+    "web": "http://rumyrashead.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "git://github.com/rumyra/my-talks"
   },
   "engines": {
     "node": "~0.8.0"
