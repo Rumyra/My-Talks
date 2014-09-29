@@ -173,7 +173,7 @@
 }
 					</code></pre>
 					<h3>You'll need vendor prefixes :)</h3>
-					<p>List of animatable properties: <a href="http://oli.jp/2010/css-animatable-properties/">http://oli.jp/2010/css-animatable-properties/</a></p>
+					<p>List of animatable properties:<br /> <a href="http://oli.jp/2010/css-animatable-properties/">http://oli.jp/2010/css-animatable-properties/</a></p>
 					<aside class="notes">
 						Declare animation using @keyframe directive
 						Keyframes - pecentages or beg & end with 'from' 'to'
@@ -410,7 +410,8 @@ navigator.vibrate([30,200]);
 
 				<section>
 					<h2>See For Yourself</h2>
-					<p>Android device - latest Chrome or Firefox browser</p>
+					<p>Android / Firefox OS</p>
+					<p>Latest Chrome or Firefox browser</p>
 					<p><a href="http://dancing.rumyra.com">http://dancing.rumyra.com/shake-n-track</a></p>
 					<p><a href="http://dancing.rumyra.com">http://dancing.rumyra.com/vibrate</a></p>
 					<aside class="notes">
@@ -470,14 +471,51 @@ gamepad.axes[0]
 				</section>
 
 				<section>
-						<h2>Cool? Other controllers?</h2>
-						<p class="fragment roll-in">What about audience participation?</p>
-						<p class="fragment roll-in">What about remote control?</p>
-						<h3 class="fragment roll-in">Device Orientation API & Web Sockets!</h3>
+					<video src="/media/gamepad.MOV" style="transform:rotate(90deg);margin-top:-100px;" controls />
 				</section>
 
 				<section>
-						<p class="fragment roll-in"><a href="http://dancing.rumyra.com/remote">dancing.rumyra.com/remote</a></p>
+						<h2>Other controllers?</h2>
+						<h3 class="fragment roll-in">Keyboard</h3>
+						<h3 class="fragment roll-in">Device Orientation API</h3>
+				</section>
+
+				<section>
+					<pre>
+function deviceOrientation() {
+  window.addEventListener('deviceorientation', function(event) {
+    
+    // compass direction
+    var alpha = event.alpha;
+    
+    // vertical tilt
+    var beta = event.beta;
+    
+    // horizontal tilt
+    var gamma = event.gamma;
+    
+  });
+}
+					</pre>
+				</section>
+
+				<section>
+						<h3>Have a look</h3>
+						<p class="fragment roll-in"><a href="http://dancing.rumyra.com/remote">dancing.rumyra.com/video-tilt</a></p>
+				</section>
+
+				<section>
+					<h3>Device + Web Sockets ==</h3>
+					<h2 class="fragment roll-in">Public participation</h2>
+				</section>
+
+				<section>
+					<h2>Review</h2>
+					<p class="fragment roll-in">One visual</p>
+					<p class="fragment roll-in">Analysed sound</p>
+					<p class="fragment roll-in">Manipulating visual with sound</p>
+					<p class="fragment roll-in">Adding feedback</p>
+					<p class="fragment roll-in">Controlling</p>
 				</section>
 				
 
@@ -509,19 +547,16 @@ gamepad.axes[0]
 
 				<section>
 					<h2>Go forth and play!</h2>
-					<p>Thank you</p>
+					<p class="fragment roll-in">Time?</p>
+					<p class="fragment roll-in">Support? (caniuse.com)</p>
+					<p class="fragment roll-in">Web vs Native?</p>
+					<p class="fragment roll-in">Consider other uses</p>
+				</section>
+
+				<section>
+					<h2>Thank you :)</h2>
 					<p><a href="http://twitter.com/rumyra">@rumyra</a></p>
 					<p><a href="http://dancing.rumyra.com">dancing.rumyra.com</a></p>
-					<aside class="notes">
-						10 YEARS AGO
-						If you had said to me 10 years ago, that I could do what i was doing then, on a laptop, in a browser, using just code. I wouldn't have laughed at you - I probbaly would have cried a little. Yet I'm standing here doing excaltly that.
-
-						Fraction of what web apis do - get on the train - it's gonna be quite a ride.
-
-						Thank you very much for reminising with me and sharing my journey - I hope you've enjoyed it as much as I have.
-
-						Web apis can do - it's just about to kick off - I would get on the train before it does :)
-					</aside>
 				</section>
 
 				<!-- <section>
