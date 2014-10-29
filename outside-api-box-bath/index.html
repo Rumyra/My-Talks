@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Browsers at Play</title>
+		<title>Web APIs</title>
 
 		<meta name="description" content="A talk about animation and audio">
 		<meta name="author" content="Ruth John">
@@ -38,13 +38,14 @@
 			<div class="slides">
 				<section>
 					<section>
-						<h1>Outside the API Box</h1>
+						<h1>Outside the Web API Box</h1>
 					</section>
 
 					<section>
 						<h2>Hello</h2>
 						<p>I'm Ruth</p>
 						<p>UX, Design, Front End Dev</p>
+						<p>The Lab @ O2</p>
 						<p>@rumyra</p>
 						<aside class="notes">
 							What we do in the Lab - Proof of Concept
@@ -66,33 +67,18 @@
 					</section>
 
 					<section>
-						<video autoplay style="width:100%;height:100%;"
- src="/media/VISUALIZATION_EFFECT__without_sound__medium.mp4" loop />
+						<img src="/media/winampViz.jpg" style="display:block;margin:0px auto;" />
  						<aside class="notes">
  							Winamp visualise inspired me - I used to go into clubs & venues with projector.
  						</aside>
 					</section>
 
 					<section>
-						<h2>My name is Ruth and I am a VJ</h2>
-						<blockquote>
-							&ldquo;VJing is a broad designation for realtime visual performance&rdquo; - Wikipedia
-						</blockquote>
-						<aside class="notes">
-							Used a piece of software called Visual Jockey
-							Line in of the sound - band, dj
-							Software detected frequencies. Beat, bass - 
-							Imported/created visuals - images, 3d models, video clips
-							Used analysed values to animate visuals
-							Much like the winamp visualiser.
-						</aside>
-					</section>
-
-					<section>
 						<h2>I was thinking</h2>
 						<p class="fragment roll-in">CSS Animations</p>
 						<p class="fragment roll-in">Web Audio API (+ others)</p>
-						<p class="fragment roll-in">Can we recreate my old uni days?</p>
+						<p class="fragment roll-in">Can we recreate my old uni days...</p>
+						<p class="fragment roll-in">In a browser?</p>
 						<aside class="notes">
 							As I was getting nostagic...
 							I started thinking about the technology we have now
@@ -190,35 +176,6 @@
 					<img src="/media/companimation.jpg" />
 				</section>-->
 
-				<!--<section>
-					<style>
-					.pen {width:50%; height:50%; float:left;}
-					</style>
-					<h2>Go Mad</h2>
-
-					<div class="pen">
-						<p data-height="268" data-theme-id="1345" data-slug-hash="zhloq" data-user="maggiben" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Rumyra/pen/zhloq'>3D TagCloud </a> by Benjamin (<a href='http://codepen.io/maggiben'>@maggiben</a>) on <a href='http://codepen.io'>CodePen</a></p>
-						<script async src="http://codepen.io/assets/embed/ei.js"></script>
-					</div>
-					<div class="pen">
-						<p data-height="268" data-theme-id="1345" data-slug-hash="GcDgz" data-user="adrianosmond" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Rumyra/pen/GcDgz'>Hypnoswirl</a> by Adrian Osmond (<a href='http://codepen.io/adrianosmond'>@adrianosmond</a>) on <a href='http://codepen.io'>CodePen</a></p>
-						<script async src="http://codepen.io/assets/embed/ei.js"></script>
-					</div>
-					<div class="pen">
-						<p data-height="268" data-theme-id="1345" data-slug-hash="mcrLf" data-user="thebabydino" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Rumyra/pen/mcrLf'>Pure CSS Rainbow Animated Möbius Strip</a> by Ana Tudor (<a href='http://codepen.io/thebabydino'>@thebabydino</a>) on <a href='http://codepen.io'>CodePen</a></p>
-						<script async src="http://codepen.io/assets/embed/ei.js"></script>
-					</div>
-					<div class="pen">
-						<p data-height="268" data-theme-id="1345" data-slug-hash="aDikd" data-user="ataylor79" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Rumyra/pen/aDikd'>YATZEE!!!</a> by Alec Taylor (<a href='http://codepen.io/ataylor79'>@ataylor79</a>) on <a href='http://codepen.io'>CodePen</a></p>
-						<script async src="http://codepen.io/assets/embed/ei.js"></script>
-					</div>
-
-					<aside class="notes">
-						Tie in new 3D stuff
-						Listen to your computer take off!
-					</aside>
-				</section>-->
-
 				<section>
 					<style>
 					.lights i:nth-child(1) {top:200px; left:100px;}
@@ -260,12 +217,17 @@
 				<section data-background="/media/mixing.jpg">
 				</section>
 
-<!--18-->
+				<section>
+					<h2>All about nodes</h2>
+					<p>Input node - sound in</p>
+					<p>Modification and anlyser nodes</p>
+					<p>Output node - sound out (usually speakers)</p>
+				</section>
+
 				<section>
 					<!-- cut out code -->
-					<h2>All The Things</h2>
-					<p class="fragment roll-in">Control volume</p>
-					<pre class="fragment roll-in"><code data-trim contenteditable>
+					<p>Control volume</p>
+					<pre><code data-trim contenteditable>
 //Control volume
 myAudioContext.createGain();
 					</code></pre>
@@ -358,26 +320,24 @@ for (var i=0; i<totalLights; i){
 					<h2>State of getUserMedia</h2>
 					<img src="/media/compuser.jpg" />
 				</section>-->
-				
+
 				<section>
-					<h2>getUserMedia</h2>
-					<pre>
-navigator.getUserMedia(
-  {audio:true},
-  gotStream,
-  function(err) {
-    console.log("The following error occured: " + err);
-  } 
-);
-					</pre>
+					<h2>Enter Another Web API</h2>
+					<p class="fragment roll-in">getUserMedia</p>
+					<p class="fragment roll-in">Picks up on devices camera and microphone</p>
 				</section>
 				
 				<section>
 						<p><a href="http://dancing.rumyra.com/linein">dancing.rumyra.com/linein</a></p>
 				</section>
 
+				<section>
+					<h2>What is a Web API?</h2>
+					<p class="fragment roll-in">Collective term for new browser API's</p>
+				</section>
+
 				<section style="overflow:hidden;">
-					<h2>Loads of new web APIs!</h2>
+					<h2>Loads of them!</h2>
 					<p>Web Audio</p>
 					<p class="fragment roll-in">getUserMedia</p>
 					<p class="fragment roll-in">Geolocation</p>
@@ -418,6 +378,16 @@ navigator.vibrate([30,200]);
 						All these demos are at dancing.rumyra.com
 					</aside>
 				</section>
+
+				<section>
+					<h2>Ambient Light API</h2>
+					<p>DeviceLightEvent</p>
+					<pre>
+window.addEventListener('devicelight', function(event) {
+  console.log(event.value);
+});
+					</pre>
+				</section>
 				
 				<section>
 					<h2>VJ needs video</h2>
@@ -452,8 +422,7 @@ recognition.onresult = function(event){
 				</section>
 				
 				<section>
-					<h2>Hello gamepad API</h2>
-					<h3>I have ALWAYS wanted to try you!</h3>
+					<h2>Gamepad API</h2>
 					<p><a href="http://www.html5rocks.com/en/tutorials/doodles/gamepad/gamepad-tester/tester.html">HTML5 rocks gamepad tester</a> http://www.html5rocks.com/en/tutorials/doodles/gamepad/</p>
 				</section>
 				
@@ -468,10 +437,6 @@ gamepad.axes[0]
 				
 				<section>
 						<p><a href="http://dancing.rumyra.com/gamepad">dancing.rumyra.com/gamepad</a></p>
-				</section>
-
-				<section>
-					<video src="/media/gamepad.MOV" style="transform:rotate(90deg);margin-top:-100px;" controls />
 				</section>
 
 				<section>
@@ -546,18 +511,24 @@ function deviceOrientation() {
 				</section>
 
 				<section>
-					<h2>Go forth and play!</h2>
-					<p class="fragment roll-in">Time?</p>
-					<p class="fragment roll-in">Support? (caniuse.com)</p>
-					<p class="fragment roll-in">Web vs Native?</p>
-					<p class="fragment roll-in">Consider other uses</p>
+					<h2>Web vs Native</h2>
+					<p>Web API's based on native functionality</p>
 				</section>
 
 				<section>
+					<h2>Should Web be Native?</h2>
+					<p>It can be</p>
+					<p class="fragment roll-in">Consider other uses</p>
+					<p class="fragment roll-in">Support? (caniuse.com)</p>
+				</section>
+
+				<section>
+					<h2>Go forth and play!</h2>
 					<h2>Thank you :)</h2>
 					<p><a href="http://twitter.com/rumyra">@rumyra</a></p>
 					<p><a href="http://dancing.rumyra.com">dancing.rumyra.com</a></p>
 				</section>
+
 
 				<!-- <section>
 					<h2>Useful Links</h2>
