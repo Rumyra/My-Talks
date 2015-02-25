@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Web APIs</title>
+
+		<meta name="description" content="A talk about animation and audio">
+		<meta name="author" content="Ruth John">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../css/reveal.min.css">
+		<link rel="stylesheet" href="../css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<section>
+						<h1>Web Vs Native</h1>
+						<p>Or</p>
+						<h2>What the browser can do for us now</h2>
+					</section>
+
+					<section>
+						<h2>Hello</h2>
+						<p>I'm Ruth</p>
+						<p>The Lab @ O2</p>
+						<p>@rumyra</p>
+						<p>Web Technologist</p>
+						<aside class="notes">
+							What we do in the Lab - Proof of Concept
+						</aside>
+					</section>
+
+					<section>
+						<h2>Winamp</h2>
+						<img src="/media/WinAmp.gif" style="display:block;margin:0px auto;" />
+						<audio controls  style="display:block;margin:0px auto;">
+							<source src="/media/llama.mp3" type="audio/mp3" />
+						</audio>
+						<aside class="notes">
+							Winamp was the mp3 player of choice
+							We're talking back when Napster was illegal
+							Visualizer
+							Sit for hours
+						</aside>
+					</section>
+
+					<section>
+						<img src="/media/winampViz.jpg" style="display:block;margin:0px auto;" />
+ 						<aside class="notes">
+ 							Winamp visualise inspired me - I used to go into clubs & venues with projector.
+ 						</aside>
+					</section>
+
+					<section>
+						<h2>I was thinking</h2>
+						<p class="fragment roll-in">CSS Animations (also Web Animation API now)</p>
+						<p class="fragment roll-in">Web Audio API (+ others)</p>
+						<p class="fragment roll-in">Can we recreate my old uni days...</p>
+						<p class="fragment roll-in">In a browser?</p>
+						<aside class="notes">
+							As I was getting nostagic...
+							I started thinking about the technology we have now
+							
+							For the past ten years I've bene engrossed with designing website layouts, more recently apps - all pretty static, coding html & css, 
+
+							I had left my VJing days behind.
+							
+							Then we got CSS animations
+							And a web audio API
+							
+							Suddenly I thoguht to myself - is it now possible - let's find out
+
+							What do we need for POC
+						</aside>
+					</section>
+
+					<section>
+						<h2>Minimal Requirements</h2>
+						<p class="fragment roll-in">Moving visual</p>
+						<p class="fragment roll-in">Analysed sound wave</p>
+						<aside class="notes">
+							My minimum requirements are:
+							Moving visual - an animation if you will
+							Sound wave - which I can detect frequencies from
+							Let's start with the moving visual - for this I want to use CSS animations.
+							Mention SVG & Canvas & CSS transitions
+							SVG - some animatable
+							Canvas - Just like the idea of CSS animations
+							CSS transitions - not as much control
+						</aside>
+					</section>
+
+					<section>
+						<style>
+
+						@-webkit-keyframes flashing {
+						  0%   { opacity: 0; }
+						  50%   { opacity: 1; }
+						  100% { opacity: 0; }
+						}
+
+						.lights {
+							position:relative;
+						  width:100%; height:500px;
+						  background-color:black;
+						}
+						.lights i {
+						  display:block;
+						  position:absolute; top:48%; left:48%;
+						  width:30px; height:30px;
+						  background-color:hsla(200, 80%, 50%, 0.8);
+						  border:10px solid hsla(200, 80%, 50%, 1);
+						  border-radius:2px;
+						  /*call animation*/
+						  -webkit-animation:flashing 2s infinite;
+						}
+						</style>
+						<div class="lights">
+							<i id="onelight"></i>
+						</div>
+						<aside class="notes">
+							
+						</aside>
+					</section>
+
+				<section>
+					<h2>Creating CSS Animation</h2>
+					<pre><code data-trim contenteditable>
+@keyframes flashing {
+  0%   { opacity: 0; }
+  50%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.lights i {
+	animation:flashing 2s infinite;
+}
+					</code></pre>
+					<h3>You'll need vendor prefixes :)</h3>
+					<p>List of animatable properties:<br /> <a href="http://oli.jp/2010/css-animatable-properties/">http://oli.jp/2010/css-animatable-properties/</a></p>
+					<aside class="notes">
+						Declare animation using @keyframe directive
+						Keyframes - pecentages or beg & end with 'from' 'to'
+						Call animation under style for element
+						Vendor prefixes
+						Lots of animatable properties - fonts, borders, backgrounds, prositioning
+						List
+						You can go mad with CSS animation today ->
+					</aside>
+				</section>
+
+				<!--<section>
+					<h2>Browser Support</h2>
+					<img src="/media/companimation.jpg" />
+				</section>-->
+
+				<section>
+					<style>
+					.lights i:nth-child(1) {top:200px; left:100px;}
+					.lights i:nth-child(2) {top:200px; left:200px;}
+					.lights i:nth-child(3) {top:200px; left:300px;}
+					.lights i:nth-child(4) {top:200px; left:400px;}
+					.lights i:nth-child(5) {top:200px; left:500px;}
+					.lights i:nth-child(6) {top:200px; left:600px;}
+					.lights i:nth-child(7) {top:200px; left:700px;}
+					.lights i:nth-child(8) {top:200px; left:800px;}
+
+					.lights i:nth-child(9) {top:300px; left:100px;}
+					.lights i:nth-child(10) {top:300px; left:200px;}
+					.lights i:nth-child(11) {top:300px; left:300px;}
+					.lights i:nth-child(12) {top:300px; left:400px;}
+					.lights i:nth-child(13) {top:300px; left:500px;}
+					.lights i:nth-child(14) {top:300px; left:600px;}
+					.lights i:nth-child(15) {top:300px; left:700px;}
+					.lights i:nth-child(16) {top:300px; left:800px;}
+					</style>
+					<h2>More lights...</h2>
+					<div class="lights">
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+					</div>
+					<aside class="notes">
+						OK cool so we have animated visuals
+					</aside>
+				</section>
+
+				<section>
+					<h2>Web Audio API</h2>
+					<aside class="notes">
+						Input node - sound in - usually file
+						Output node - sound out - usually speakers
+					</aside>
+				</section>
+
+				<section data-background="/media/magic.gif">
+				</section>
+
+				<section data-background="/media/mixing.jpg">
+				</section>
+
+				<section>
+					<h2>All about nodes</h2>
+					<p>Input node - sound in</p>
+					<p>Modification and anlyser nodes</p>
+					<p>Output node - sound out (usually speakers)</p>
+				</section>
+
+				<section>
+					<!-- cut out code -->
+					<p>Control volume</p>
+					<pre><code data-trim contenteditable>
+//Control volume
+myAudioContext.createGain();
+					</code></pre>
+
+					<p class="fragment roll-in">Create filters</p>
+					<pre class="fragment roll-in"><code data-trim contenteditable>
+//Create filter
+myAudioContext.createBiquadFilter();
+					</code></pre>
+
+					<p class="fragment roll-in">Create sound</p>
+					<pre class="fragment roll-in"><code data-trim contenteditable>
+//Create sound
+myAudioContext.createOscillator();
+					</code></pre>
+					<p class="fragment roll-in">The <a href="http://chimera.labs.oreilly.com/books/1234000001552/index.html">Web Audio API O'Reilly book</a> by Boris Smus is free to read online!</p>
+					<aside class="notes">
+						You can do lots of things with the web audio API.
+						Simple
+							start/stop
+							volume
+						More complex things like add filters to the wave form
+						You can even create your own sounds
+						THE O'REILLY BOOK IS FREE!
+						For my POC I want to focus on analysing the waveform ->
+					</aside>
+				</section>
+
+				<section>
+					<h2>Analysing</h2>
+					<p class="fragment roll-in">We can do that :D</p>
+					<pre class="fragment roll-in"><code data-trim contenteditable>
+//create instance
+var analyser = myAudioContext.createAnalyser();
+
+//get data
+analyser.getByteFrequencyData();
+analyser.getFloatFrequencyData();
+analyser.getByteTimeDomainData();
+					</code></pre>
+					<aside class="notes">
+						You can analyse an audio context using the web audio api by creating an analyser node
+						That then gives you methods for frequency and time data - brilliant just what we need
+						I want frequency
+					</aside>
+				</section>
+
+				<section>
+					<h2>More magic (& some code)</h2>
+					<!--<p class="fragment roll-in">Use <code>requestAnimationFrame</code> to call the analyser</p>
+					<p class="fragment roll-in">Get data and control the CSS animation</p>
+					<pre class="fragment roll-in"><code data-trim contenteditable>
+element.style.animationPlayState = "paused";
+element.style.animationPlayState = "running";
+					</code></pre>-->
+					<p>Loop through our lights, match them to a frequency and set them alight</p>
+					<pre>
+//get light elements
+var lights = document.getElementsByTagName('i');
+var totalLights = lights.length;
+
+for (var i=0; i<totalLights; i){
+	var freqDataKey = i*8;
+  if (frequencyData[freqDataKey] > 160){
+    lights[i].style.opacity = "1";
+  } else {
+    lights[i].style.opacity = "0.2";
+  }
+}
+					</pre>
+					<aside class="notes">
+						Use requestAnimationFrame (I prefer it to setinterval or settimeout)
+						Control CSS animation - animation play state not the best way - may have a really long animation control frames in the middle of
+						Just changed opacity with js for the demo
+						A bit like this - demo 1
+					</aside>
+				</section>
+				
+				<section>
+						<p><a href="http://dancing.rumyra.com/simple">dancing.rumyra.com/simple</a></p>
+						<p><a href="http://dancing.rumyra.com/complex">dancing.rumyra.com/complex</a></p>
+				</section>
+
+				<!--<section>
+					<h2>State of audio</h2>
+					<img src="/media/compaudio.jpg" />
+				</section>
+
+				<section>
+					<h2>State of getUserMedia</h2>
+					<img src="/media/compuser.jpg" />
+				</section>-->
+
+				<section>
+					<h2>Web Audio API + Web MIDI API</h2>
+					<p class="fragment roll-in">iOS Core Audio Frameworks: (inc. AudioToolbox, AudioUnit, CoreAudio, CoreMIDI)</p>
+					<p class="fragment roll-in">Android: android.media</p>
+					<p class="fragment roll-in">Windows: XAudio2, WASAPI</p>
+					<p class="fragment roll-in">Not direct match, but similar functionality to native platforms.</p>
+				</section>
+
+				<section>
+					<h2>So... back to our demo</h2>
+				</section>
+
+				<section>
+					<h2>Enter Another Web API</h2>
+					<p class="fragment roll-in">getUserMedia</p>
+					<p class="fragment roll-in">Picks up on devices camera and microphone</p>
+				</section>
+				
+				<section>
+						<p><a href="http://dancing.rumyra.com/linein">dancing.rumyra.com/linein</a></p>
+				</section>
+
+				<section>
+					<h2>getUserMedia API</h2>
+					<p class="fragment roll-in">iOS: UIImagePickerController, </p>
+					<p class="fragment roll-in">Android: android.hardware.camera, android.media (recorder object)</p>
+					<p class="fragment roll-in">Windows:  Microsoft.Xna.Framework.Audio.Microphone</p>
+				</section>
+
+				<section>
+					<h2>There's lots more Web API's</h2>
+					<p>Let's play with our code</p>
+				</section>
+
+				<section>
+					<h2>Vibration API</h2>
+					<p>Causes your device to vibrate (if it has the appropriate hardware)</p>
+					<pre>
+navigator.vibrate([30,200]);	
+					</pre>
+				</section>
+				
+				<section>
+					<h2>Polyfill</h2>
+					<p class="fragment roll-in">Non-vibrating devices</p>
+					<p class="fragment roll-in"><a href="http://codepo8.github.io/mozVibrate-polyfill/">codepo8.github.io/mozVibrate-polyfill</a></p>
+				</section>
+
+				<section>
+					<h2>See For Yourself</h2>
+					<p>Android / Firefox OS</p>
+					<p>Latest Chrome or Firefox browser</p>
+					<p><a href="http://dancing.rumyra.com">http://dancing.rumyra.com/shake-n-track</a></p>
+					<p><a href="http://dancing.rumyra.com">http://dancing.rumyra.com/vibrate</a></p>
+					<aside class="notes">
+						All these demos are at dancing.rumyra.com
+					</aside>
+				</section>
+
+				<section>
+					<h2>Use 'Web API's' a lot - but what are they?</h2>
+					<p class="fragment roll-in">Collective term for new browser API's</p>
+					<p class="fragment roll-in">Also known as Browser API's</p>
+					<p class="fragment roll-in">Sometimes simply Javascript API's</p>
+				</section>
+
+				<section style="overflow:hidden;">
+					<h2>Loads of them!</h2>
+					<p>Web Audio</p>
+					<p class="fragment roll-in">getUserMedia</p>
+					<p class="fragment roll-in">Geolocation</p>
+					<p class="fragment roll-in">Web RTC</p>
+					<p class="fragment roll-in">Game Pad API</p>
+					<p class="fragment roll-in">Vibration API</p>
+					<p class="fragment roll-in">Ambient Light API</p>
+					<p class="fragment roll-in">Proximity API</p>
+					<p class="fragment roll-in">Screen Orientation API</p>
+					<aside class="notes">
+						All these demos are at dancing.rumyra.com
+					</aside>
+				</section>
+
+				<section style="overflow:hidden;">
+					<h2>...and more...</h2>
+					<p>Device Orientation API</p>
+					<p class="fragment roll-in">Web Speech API</p>
+					<p class="fragment roll-in">Battery Status API</p>
+					<p class="fragment roll-in">Simple Push API</p>
+					<p class="fragment roll-in">Network Information API</p>
+					<p class="fragment roll-in">File System API</p>
+					<p class="fragment roll-in">Clipboard API</p>
+					<p class="fragment roll-in">Full Screen API</p>
+					<p class="fragment roll-in">Alarm API</p>
+					<p class="fragment roll-in">...and more</p>
+					<aside class="notes">
+						All these demos are at dancing.rumyra.com
+					</aside>
+				</section>
+
+				<section style="overflow:hidden;">
+					<h2>Resources</h2>
+					<p><a href"https://github.com/w3c">W3C on Github</a></p>
+					<p><a href="https://developer.mozilla.org/en/docs/Web/API">Mozilla WebAPI Docs</a></p>
+					<p><a href="http://caniuse.com/">caniuse.com</a></p>
+					<p><a href="http://www.html5rocks.com/en/">HTML5 Rocks (Articles & Tutorials)</a></p>
+				</section>
+
+
+				<section>
+					<h2>Interlude</h2>
+					<h3>VJ needs video</h3>
+				</section>
+				
+				<section>
+						<p><a href="http://dancing.rumyra.com/videomix">dancing.rumyra.com/videomix</a></p>
+				</section>
+				
+				<section>
+					<h2>Web Speech API</h2>
+					<p>Two parts</p>
+					<p class="fragment roll-in">Speech synthesis</p>
+					<p class="fragment roll-in">Speech recognition</p>
+				</section>
+				
+				<section>
+					<h2>Speech Recognition</h2>
+					<pre>
+var recognition = new webkitSpeechRecognition();
+recognition.continuous = true;
+recognition.interimResults = true;
+recognition.start();
+recognition.onresult = function(event){
+  var results = event.results;
+}
+					</pre>
+				</section>
+				
+				<section>
+						<p><a href="http://dancing.rumyra.com/voice">dancing.rumyra.com/voice</a></p>
+				</section>
+
+				<section>
+					<h2>Web Speech API</h2>
+					<h3 class="fragment roll-in">(Doesn't have a persona... yet)</h3>
+					<p class="fragment roll-in">Siri</p>
+					<p class="fragment roll-in">OK Google</p>
+					<p class="fragment roll-in">Cortana</p>
+					<p class="fragment roll-in">Voice is big - Amazon Echo, Samsung Smart TV</p>
+				</section>
+				
+				<section>
+					<h2>Gamepad API</h2>
+					<p><a href="http://www.html5rocks.com/en/tutorials/doodles/gamepad/gamepad-tester/tester.html">HTML5 rocks gamepad tester</a> http://www.html5rocks.com/en/tutorials/doodles/gamepad/</p>
+				</section>
+				
+				<section>
+					<h2>Buttons & Axes</h2>
+					<pre>
+gamepad.buttons[1]
+
+gamepad.axes[0]
+					</pre>
+				</section>
+				
+				<section>
+						<p><a href="http://dancing.rumyra.com/gamepad">dancing.rumyra.com/gamepad</a></p>
+				</section>
+
+				<section>
+						<h2>Other controllers?</h2>
+						<h3 class="fragment roll-in">Keyboard</h3>
+						<h3 class="fragment roll-in">Device Orientation API</h3>
+				</section>
+
+				<section>
+					<pre>
+function deviceOrientation() {
+  window.addEventListener('deviceorientation', function(event) {
+    
+    // compass direction
+    var alpha = event.alpha;
+    
+    // vertical tilt
+    var beta = event.beta;
+    
+    // horizontal tilt
+    var gamma = event.gamma;
+    
+  });
+}
+					</pre>
+				</section>
+
+				<section>
+						<h3>Have a look</h3>
+						<p class="fragment roll-in"><a href="http://dancing.rumyra.com/remote">dancing.rumyra.com/video-tilt</a></p>
+				</section>
+
+				<section>
+					<h2>Review</h2>
+					<p class="fragment roll-in">Web API's</p>
+					<p class="fragment roll-in">Web Audio</p>
+					<p class="fragment roll-in">getUserMedia</p>
+					<p class="fragment roll-in">Recreated software in a browser</p>
+					<p class="fragment roll-in">Vibration, speech, device orientation</p>
+				</section>
+				
+
+				<section>
+					<h2>Web vs Native</h2>
+					<p>Web API's based on native functionality</p>
+				</section>
+
+				<section>
+					<h2>Is Web better than Native?</h2>
+					<p class="fragment roll-in">No</p>
+				</section>
+
+				<section>
+					<h2>Is Native better than Web?</h2>
+					<p class="fragment roll-in">No</p>
+					<p class="fragment roll-in">We're asking the wrong questions</p>
+				</section>
+
+				<section>
+					<h2>Should Web be Native?</h2>
+					<p>It can be</p>
+					<p class="fragment roll-in">But it doesn't have to be</p>
+					<p class="fragment roll-in">They are different things.</p>
+					<p class="fragment roll-in">The web needs connectivity.</p>
+					<p class="fragment roll-in">Native needs a device.</p>
+				</section>
+
+				<section>
+					<h2>Should you use Web to replace Native?</h2>
+					<p class="fragment roll-in">You can, but I wouldn't suggest it</p>
+				</section>
+
+				<section>
+					<h2>The one takeaway:</h2>
+					<p class="fragment roll-in">Every project is different.</p>
+					<p class="fragment roll-in">Not just about technology - requirements, functionality, resources, processes.</p>
+				</section>
+
+				<section>
+					<h2>Go forth and play!</h2>
+					<h2>Thank you :)</h2>
+					<p><a href="http://twitter.com/rumyra">@rumyra</a></p>
+					<p><a href="http://dancing.rumyra.com">dancing.rumyra.com</a></p>
+				</section>
+
+
+				<!-- <section>
+					<h2>Useful Links</h2>
+					<ul>
+						<li><a href="http://dancing.rumyra.com">dancing.rumyra.com</a></li>
+						<li><a href="http://chimera.labs.oreilly.com/books/1234000001552/index.html">O'Reilly Audio API Book by Boris Smus</a></li>
+						<li><a href="http://jsantell.github.io/dancer.js/">dancer.js</a></li>
+					</ul>
+				</section>
+			</secion> -->
+			</div>
+
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				// theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				theme: 'serif',
+				// transition: Reveal.getQueryHash().transition || 'default',
+				// default/cube/page/concave/zoom/linear/fade/none
+				transition: 'fade',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
