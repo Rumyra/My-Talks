@@ -76,51 +76,67 @@
 					<section>
 						<h2>Code</h2>
 						<pre><code data-trim contenteditable>
-//create instance
-var analyser = myAudioContext.createAnalyser();
+var mapCenter = {};
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function (position) {
+    setCenter.lat = position.coords.latitude;
+    setCenter.lng = position.coords.longitude;
+    console.log(setCenter);
+  });
+} else {
+  console.warn('sorry, geolocation not supported');
+}
 
-//get data
-analyser.getByteFrequencyData();
-analyser.getFloatFrequencyData();
-analyser.getByteTimeDomainData();
-						</code></pre>
+</code></pre>
 					</section>
 
 					<section>
 						<h2>Geolocation watch functionlity</h2>
-						<p>CODE!!</p>
+						<pre><code data-trim contenteditable>
+var watchID = navigator.geolocation.watchPosition(function(position) {
+  do_something(position.coords.latitude, position.coords.longitude);
+});
+
+</code></pre>
+					<p>Register a handler function that will be called automatically each time the position of the device changes.</p>
+					<p>Returns unique ID to identify position watcher</p>
+					</section>
+
+					<section>
+						<h2>Support</h2>
+						<img src="/media/thundercats.gif" style="width:70%;height:auto;" />
 					</section>
 
 					<section>
 						<h2>Support</h2>
 						<table>
 							<tr>
-								<td><img src="" style="width:5vw;height:5vw;" />Chrome</td>
-								<td><img src="" style="width:5vw;height:5vw;" />Firefox</td>
-								<td><img src="" style="width:5vw;height:5vw;" />IE</td>
-								<td><img src="" style="width:5vw;height:5vw;" />Safari</td>
-								<td><img src="" style="width:5vw;height:5vw;" />Opera</td>
+								<td><img src="/media/chrome.png" style="width:5vw;height:5vw;" />Chrome</td>
+								<td><img src="/media/firefox.png" style="width:5vw;height:5vw;" />Firefox</td>
+								<td><img src="/media/ie.png" style="width:5vw;height:5vw;" />IE</td>
+								<td><img src="/media/safari.png" style="width:5vw;height:5vw;" />Safari</td>
+								<td><img src="/media/opera.png" style="width:5vw;height:5vw;" />Opera</td>
 							</tr>
 							<tr>
-								<td><img src="" style="width:12vw;height:9vw;" /></td>
-								<td><img src="" style="width:12vw;height:9vw;" /></td>
-								<td><img src="" style="width:12vw;height:9vw;" /></td>
-								<td><img src="" style="width:12vw;height:9vw;" /></td>
-								<td><img src="" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
 							</tr>
 							<tr>
-								<td><img src="" style="width:5vw;height:5vw;" /><br />Android</td>
-								<td><img src="" style="width:5vw;height:5vw;" /><br />Firefox OS</td>
-								<td><img src="" style="width:5vw;height:5vw;" /><br />Mobile IE</td>
-								<td><img src="" style="width:5vw;height:5vw;" /><br />iOS</td>
-								<td><img src="" style="width:5vw;height:5vw;" /><br />Opera Mini</td>
+								<td><img src="/media/android.png" style="width:5vw;height:5vw;" /><br />Android</td>
+								<td><img src="/media/firefoxos.png" style="width:5vw;height:5vw;" /><br />Firefox OS</td>
+								<td><img src="/media/mobileie.png" style="width:5vw;height:5vw;" /><br />Mobile IE</td>
+								<td><img src="/media/ios.png" style="width:5vw;height:5vw;" /><br />iOS</td>
+								<td><img src="/media/operamini.png" style="width:5vw;height:5vw;" /><br />Opera Mini</td>
 							</tr>
 							<tr>
-								<td><img src="" style="width:12vw;height:9vw;" /></td>
-								<td><img src="" style="width:12vw;height:9vw;" /></td>
-								<td><img src="" style="width:12vw;height:9vw;" /></td>
-								<td><img src="" style="width:12vw;height:9vw;" /></td>
-								<td><img src="" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" style="width:12vw;height:9vw;" /></td>
 							</tr>
 						</table>
 						<p>See caniuse.com for more (subject to change)</p>
@@ -130,7 +146,7 @@ analyser.getByteTimeDomainData();
 						<h2>Resources</h2>
 						<p><a href="http://www.sitepoint.com/find-a-route-using-the-geolocation-and-the-google-maps-api/">Getting Directions Using the Google Maps API</a></p>
 						<p><a href="http://robertnyman.com/html5/geolocation/current-location-and-directions.html">Robert Nyman on Geolocation API</a></p>
-						<!--watch-->
+						<p><a href="http://www.html5rocks.com/en/tutorials/geolocation/trip_meter/">A Simple Trip Meter using the Geolocation API</a></p>
 					</section>
 
 					<section>
@@ -140,14 +156,16 @@ analyser.getByteTimeDomainData();
 					<section>
 						<h2>Web Animation API</h2>
 						<pre><code data-trim contenteditable>
-//create instance
-var analyser = myAudioContext.createAnalyser();
+condor.animate([
+  {opacity: '1', transform: 'translate(-200px, 0px)'},
+  {opacity: '1', transform: 'translate(1200px, -700px)'}
+  ], {
+    duration:2500,
+    iterations:1,
+    delay:300
+});
 
-//get data
-analyser.getByteFrequencyData();
-analyser.getFloatFrequencyData();
-analyser.getByteTimeDomainData();
-						</code></pre>
+</code></pre>
 					</section>
 
 					<section>
@@ -168,9 +186,36 @@ analyser.getByteTimeDomainData();
 					<section>
 						<h2>Support</h2>
 						<table>
-							<tr><th></th></tr>
-							<tr><td></td></tr>
+							<tr>
+								<td><img src="/media/chrome.png" style="width:5vw;height:5vw;" />Chrome</td>
+								<td><img src="/media/firefox.png" style="width:5vw;height:5vw;" />Firefox</td>
+								<td><img src="/media/ie.png" style="width:5vw;height:5vw;" />IE</td>
+								<td><img src="/media/safari.png" style="width:5vw;height:5vw;" />Safari</td>
+								<td><img src="/media/opera.png" style="width:5vw;height:5vw;" />Opera</td>
+							</tr>
+							<tr>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat Liono" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat Liono" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat Liono" style="width:12vw;height:9vw;" /></td>
+							</tr>
+							<tr>
+								<td><img src="/media/android.png" style="width:5vw;height:5vw;" /><br />Android</td>
+								<td><img src="/media/firefoxos.png" style="width:5vw;height:5vw;" /><br />Firefox OS</td>
+								<td><img src="/media/mobileie.png" style="width:5vw;height:5vw;" /><br />Mobile IE</td>
+								<td><img src="/media/ios.png" style="width:5vw;height:5vw;" /><br />iOS</td>
+								<td><img src="/media/operamini.png" style="width:5vw;height:5vw;" /><br />Opera Mini</td>
+							</tr>
+							<tr>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat Liono" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/.png" alt="Profile image of thundercat Liono" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat Mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat Mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" style="width:12vw;height:9vw;" /></td>
+							</tr>
 						</table>
+						<p>See caniuse.com for more (subject to change)</p>
 					</section>
 
 					<section>
@@ -348,6 +393,13 @@ analyser.getByteTimeDomainData();
 						That then gives you methods for frequency and time data - brilliant just what we need
 						I want frequency
 					</aside>
+				</section>
+
+				<section>
+					<h2>Credits</h2>
+					<p>Borwser Logos: https://github.com/alrra/browser-logos</p>
+					<p>Golden Condor Artwork: http://emanon01.deviantart.com/art/The-golden-condor-3d-174093696</p>
+
 				</section>
 
 				</section>
