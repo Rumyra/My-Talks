@@ -74,7 +74,7 @@
 					</section>
 
 					<section>
-						<h2>Code</h2>
+						<h2>Geolocation Code</h2>
 						<pre><code data-trim contenteditable>
 var mapCenter = {};
 if (navigator.geolocation) {
@@ -231,36 +231,80 @@ condor.animate([
 					</section>
 
 					<section>
-						<h2>Web Audio API</h2>
-						<p class="fragment roll-in">Nodes (input, modification, analyser & output).</p>
-						<p class="fragment roll-in">More control:</p>
+						<img src="/media/clangers.jpg" alt="the Clangers hanging out on the moon" />
 					</section>
 
 					<section>
 						<h2>Web Audio API</h2>
-						<pre><code data-trim contenteditable>
-//create instance
-var analyser = myAudioContext.createAnalyser();
+						<p class="fragment roll-in">Nodes (input, modification, analyser & output).</p>
+						<p class="fragment roll-in">Input node = &lt;audio> src</p>
+						<p class="fragment roll-in">Modification node = delay</p>
+						<p class="fragment roll-in">Output node = speakers</p>
+					</section>
 
-//get data
-analyser.getByteFrequencyData();
-analyser.getFloatFrequencyData();
-analyser.getByteTimeDomainData();
+					<section>
+						<h2>Web Audio Code</h2>
+						<pre><code data-trim contenteditable>
+// create instance
+var audioCtx = new AudioContext,
+
+// input
+var audioSource = audioCtx.createMediaElementSource(soundEl),
+
+// new modification node
+var delay = audioCtx.createDelay();
+
+// set delay time
+delay.delayTime.value = 0.3;
+
+// connect everything together & play
+source.connect(delay);
+source.connect(audioCtx.destination);
+delay.connect(audioCtx.destination);
+soundEl.play();
+
 						</code></pre>
 					</section>
 
 					<section>
 						<h2>Support</h2>
 						<table>
-							<tr><th></th></tr>
-							<tr><td></td></tr>
+							<tr>
+								<td><img src="/media/chrome.png" style="width:5vw;height:5vw;" />Chrome</td>
+								<td><img src="/media/firefox.png" style="width:5vw;height:5vw;" />Firefox</td>
+								<td><img src="/media/ie.png" style="width:5vw;height:5vw;" />IE</td>
+								<td><img src="/media/safari.png" style="width:5vw;height:5vw;" />Safari</td>
+								<td><img src="/media/opera.png" style="width:5vw;height:5vw;" />Opera</td>
+							</tr>
+							<tr>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat liono" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+							</tr>
+							<tr>
+								<td><img src="/media/android.png" style="width:5vw;height:5vw;" /><br />Android</td>
+								<td><img src="/media/firefoxos.png" style="width:5vw;height:5vw;" /><br />Firefox OS</td>
+								<td><img src="/media/mobileie.png" style="width:5vw;height:5vw;" /><br />Mobile IE</td>
+								<td><img src="/media/ios.png" style="width:5vw;height:5vw;" /><br />iOS</td>
+								<td><img src="/media/operamini.png" style="width:5vw;height:5vw;" /><br />Opera Mini</td>
+							</tr>
+							<tr>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat Mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat liono" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" style="width:12vw;height:9vw;" /></td>
+							</tr>
 						</table>
+						<p>See caniuse.com for more (subject to change)</p>
 					</section>
 
 					<section>
 						<h2>Resources</h2>
-						<p><a href="http://rachelnabors.com/waapi/">Resources from Rachel Nabors</a></p>
-						<p><a href="http://updates.html5rocks.com/2014/05/Web-Animations---element-animate-is-now-in-Chrome-36">HTML5 Rocks Article</a></p>
+						<p><a href="http://chimera.labs.oreilly.com/books/1234000001552/index.html">O'Reilly Web Audio API Book by Boris Smus (Free Online)</a></p>
+						<p><a href="http://www.html5rocks.com/en/tutorials/casestudies/jamwithchrome-audio/">Jam with Chrome article</a></p>
 					</section>
 
 					<section>
@@ -274,30 +318,54 @@ analyser.getByteTimeDomainData();
 					</section>
 
 					<section>
-						<h2>Ambient Light API</h2>
+						<h2>Ambient Light Code</h2>
 						<pre><code data-trim contenteditable>
-//create instance
-var analyser = myAudioContext.createAnalyser();
-
-//get data
-analyser.getByteFrequencyData();
-analyser.getFloatFrequencyData();
-analyser.getByteTimeDomainData();
+// devicelight event
+window.addEventListener("devicelight", function (event) {
+  var luminosity = event.value;
+  console.log('light: '+luminosity);
+});
 						</code></pre>
 					</section>
 
 					<section>
 						<h2>Support</h2>
 						<table>
-							<tr><th></th></tr>
-							<tr><td></td></tr>
+							<tr>
+								<td><img src="/media/chrome.png" style="width:5vw;height:5vw;" />Chrome</td>
+								<td><img src="/media/firefox.png" style="width:5vw;height:5vw;" />Firefox</td>
+								<td><img src="/media/ie.png" style="width:5vw;height:5vw;" />IE</td>
+								<td><img src="/media/safari.png" style="width:5vw;height:5vw;" />Safari</td>
+								<td><img src="/media/opera.png" style="width:5vw;height:5vw;" />Opera</td>
+							</tr>
+							<tr>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
+							</tr>
+							<tr>
+								<td><img src="/media/android.png" style="width:5vw;height:5vw;" /><br />Android</td>
+								<td><img src="/media/firefoxos.png" style="width:5vw;height:5vw;" /><br />Firefox OS</td>
+								<td><img src="/media/mobileie.png" style="width:5vw;height:5vw;" /><br />Mobile IE</td>
+								<td><img src="/media/ios.png" style="width:5vw;height:5vw;" /><br />iOS</td>
+								<td><img src="/media/operamini.png" style="width:5vw;height:5vw;" /><br />Opera Mini</td>
+							</tr>
+							<tr>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat Mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" style="width:12vw;height:9vw;" /></td>
+							</tr>
 						</table>
+						<p>See caniuse.com for more (subject to change)</p>
 					</section>
 
 					<section>
 						<h2>Resources</h2>
-						<p><a href="http://rachelnabors.com/waapi/">Resources from Rachel Nabors</a></p>
-						<p><a href="http://updates.html5rocks.com/2014/05/Web-Animations---element-animate-is-now-in-Chrome-36">HTML5 Rocks Article</a></p>
+						<p><a href="http://www.sitepoint.com/mobile-web-superpowers-ambient-light-api/">Mobile Web Superpowers – Ambient Light API</a></p>
 					</section>
 
 					<section>
