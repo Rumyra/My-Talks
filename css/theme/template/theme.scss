@@ -167,4 +167,29 @@ body {
   color: $linkColor;
 }
 
+.reveal .slides {
+	&>section {
+		&>section {
+			.support {
+				width: 90vw; margin: 0px auto 0px -10vw;
+				font-size: 80%;
+				td {padding:0px; text-align:center;}
+				img {
+					margin:0px;
+					border:none; box-shadow:none;
+				}
+				.browsers {
+					td {
+						img {width:10vw; height:auto;}
+					}
+				}
+				.browsers-mobile {
+					td {
+						img {width:5vw; height:auto; padding-top:20px;}
+					}
+				}
+			}	
+		}
+	}
+}  
 

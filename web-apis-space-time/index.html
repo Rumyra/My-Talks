@@ -76,7 +76,6 @@
 					<section>
 						<h2>Geolocation Code</h2>
 						<pre><code data-trim contenteditable>
-var mapCenter = {};
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function (position) {
     setCenter.lat = position.coords.latitude;
@@ -109,13 +108,13 @@ var watchID = navigator.geolocation.watchPosition(function(position) {
 
 					<section>
 						<h2>Support</h2>
-						<table>
-							<tr>
-								<td><img src="/media/chrome.png" style="width:5vw;height:5vw;" />Chrome</td>
-								<td><img src="/media/firefox.png" style="width:5vw;height:5vw;" />Firefox</td>
-								<td><img src="/media/ie.png" style="width:5vw;height:5vw;" />IE</td>
-								<td><img src="/media/safari.png" style="width:5vw;height:5vw;" />Safari</td>
-								<td><img src="/media/opera.png" style="width:5vw;height:5vw;" />Opera</td>
+						<table class="support">
+							<tr class="browsers">
+								<td><img src="/media/chrome.png" title="Chrome" alt="Chrome pony" /></td>
+								<td><img src="/media/firefox.png" title="firefox" alt="Firefox pony" /></td>
+								<td><img src="/media/ie.png" alt="Internet Explorer" alt="Internet Explorer pony" /></td>
+								<td><img src="/media/safari.png" title="Safari" alt="Safari Pony" /></td>
+								<td><img src="/media/opera.png" title="Opera" alt="Opera Pony" /></td>
 							</tr>
 							<tr>
 								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
@@ -124,12 +123,12 @@ var watchID = navigator.geolocation.watchPosition(function(position) {
 								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
 								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
 							</tr>
-							<tr>
-								<td><img src="/media/android.png" style="width:5vw;height:5vw;" /><br />Android</td>
-								<td><img src="/media/firefoxos.png" style="width:5vw;height:5vw;" /><br />Firefox OS</td>
-								<td><img src="/media/mobileie.png" style="width:5vw;height:5vw;" /><br />Mobile IE</td>
-								<td><img src="/media/ios.png" style="width:5vw;height:5vw;" /><br />iOS</td>
-								<td><img src="/media/operamini.png" style="width:5vw;height:5vw;" /><br />Opera Mini</td>
+							<tr class="browsers-mobile">
+								<td><img src="/media/android.png" title="Android" alt="" /></td>
+								<td><img src="/media/firefoxos.png" title="FirefoxOS" alt="" /></td>
+								<td><img src="/media/mobileie.png" title="Mobile IE" alt="" /></td>
+								<td><img src="/media/ios.png" title="iOS" alt="" /></td>
+								<td><img src="/media/operamini.png" title="Opera Mini" alt="" /></td>
 							</tr>
 							<tr>
 								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
@@ -160,9 +159,9 @@ condor.animate([
   {opacity: '1', transform: 'translate(-200px, 0px)'},
   {opacity: '1', transform: 'translate(1200px, -700px)'}
   ], {
-    duration:2500,
-    iterations:1,
-    delay:300
+    duration: 2500,
+    iterations: 1,
+    delay: 300
 });
 
 </code></pre>
@@ -185,13 +184,13 @@ condor.animate([
 
 					<section>
 						<h2>Support</h2>
-						<table>
-							<tr>
-								<td><img src="/media/chrome.png" style="width:5vw;height:5vw;" />Chrome</td>
-								<td><img src="/media/firefox.png" style="width:5vw;height:5vw;" />Firefox</td>
-								<td><img src="/media/ie.png" style="width:5vw;height:5vw;" />IE</td>
-								<td><img src="/media/safari.png" style="width:5vw;height:5vw;" />Safari</td>
-								<td><img src="/media/opera.png" style="width:5vw;height:5vw;" />Opera</td>
+						<table class="support">
+							<tr class="browsers">
+								<td><img src="/media/chrome.png" title="Chrome" alt="Chrome pony" /></td>
+								<td><img src="/media/firefox.png" title="firefox" alt="Firefox pony" /></td>
+								<td><img src="/media/ie.png" alt="Internet Explorer" alt="Internet Explorer pony" /></td>
+								<td><img src="/media/safari.png" title="Safari" alt="Safari Pony" /></td>
+								<td><img src="/media/opera.png" title="Opera" alt="Opera Pony" /></td>
 							</tr>
 							<tr>
 								<td><img src="/media/liono.png" alt="Profile image of thundercat Liono" style="width:12vw;height:9vw;" /></td>
@@ -200,12 +199,12 @@ condor.animate([
 								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
 								<td><img src="/media/liono.png" alt="Profile image of thundercat Liono" style="width:12vw;height:9vw;" /></td>
 							</tr>
-							<tr>
-								<td><img src="/media/android.png" style="width:5vw;height:5vw;" /><br />Android</td>
-								<td><img src="/media/firefoxos.png" style="width:5vw;height:5vw;" /><br />Firefox OS</td>
-								<td><img src="/media/mobileie.png" style="width:5vw;height:5vw;" /><br />Mobile IE</td>
-								<td><img src="/media/ios.png" style="width:5vw;height:5vw;" /><br />iOS</td>
-								<td><img src="/media/operamini.png" style="width:5vw;height:5vw;" /><br />Opera Mini</td>
+							<tr class="browsers-mobile">
+								<td><img src="/media/android.png" title="Android" alt="" /></td>
+								<td><img src="/media/firefoxos.png" title="FirefoxOS" alt="" /></td>
+								<td><img src="/media/mobileie.png" title="Mobile IE" alt="" /></td>
+								<td><img src="/media/ios.png" title="iOS" alt="" /></td>
+								<td><img src="/media/operamini.png" title="Opera Mini" alt="" /></td>
 							</tr>
 							<tr>
 								<td><img src="/media/liono.png" alt="Profile image of thundercat Liono" style="width:12vw;height:9vw;" /></td>
@@ -244,8 +243,7 @@ condor.animate([
 
 					<section>
 						<h2>Web Audio Code</h2>
-						<pre><code data-trim contenteditable>
-// create instance
+						<pre><code data-trim contenteditable>// create instance
 var audioCtx = new AudioContext,
 
 // input
@@ -268,13 +266,13 @@ soundEl.play();
 
 					<section>
 						<h2>Support</h2>
-						<table>
-							<tr>
-								<td><img src="/media/chrome.png" style="width:5vw;height:5vw;" />Chrome</td>
-								<td><img src="/media/firefox.png" style="width:5vw;height:5vw;" />Firefox</td>
-								<td><img src="/media/ie.png" style="width:5vw;height:5vw;" />IE</td>
-								<td><img src="/media/safari.png" style="width:5vw;height:5vw;" />Safari</td>
-								<td><img src="/media/opera.png" style="width:5vw;height:5vw;" />Opera</td>
+						<table class="support">
+							<tr class="browsers">
+								<td><img src="/media/chrome.png" title="Chrome" alt="Chrome pony" /></td>
+								<td><img src="/media/firefox.png" title="firefox" alt="Firefox pony" /></td>
+								<td><img src="/media/ie.png" alt="Internet Explorer" alt="Internet Explorer pony" /></td>
+								<td><img src="/media/safari.png" title="Safari" alt="Safari Pony" /></td>
+								<td><img src="/media/opera.png" title="Opera" alt="Opera Pony" /></td>
 							</tr>
 							<tr>
 								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
@@ -283,12 +281,12 @@ soundEl.play();
 								<td><img src="/media/liono.png" alt="Profile image of thundercat liono" style="width:12vw;height:9vw;" /></td>
 								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
 							</tr>
-							<tr>
-								<td><img src="/media/android.png" style="width:5vw;height:5vw;" /><br />Android</td>
-								<td><img src="/media/firefoxos.png" style="width:5vw;height:5vw;" /><br />Firefox OS</td>
-								<td><img src="/media/mobileie.png" style="width:5vw;height:5vw;" /><br />Mobile IE</td>
-								<td><img src="/media/ios.png" style="width:5vw;height:5vw;" /><br />iOS</td>
-								<td><img src="/media/operamini.png" style="width:5vw;height:5vw;" /><br />Opera Mini</td>
+							<tr class="browsers-mobile">
+								<td><img src="/media/android.png" title="Android" alt="" /></td>
+								<td><img src="/media/firefoxos.png" title="FirefoxOS" alt="" /></td>
+								<td><img src="/media/mobileie.png" title="Mobile IE" alt="" /></td>
+								<td><img src="/media/ios.png" title="iOS" alt="" /></td>
+								<td><img src="/media/operamini.png" title="Opera Mini" alt="" /></td>
 							</tr>
 							<tr>
 								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
@@ -330,13 +328,13 @@ window.addEventListener("devicelight", function (event) {
 
 					<section>
 						<h2>Support</h2>
-						<table>
-							<tr>
-								<td><img src="/media/chrome.png" style="width:5vw;height:5vw;" />Chrome</td>
-								<td><img src="/media/firefox.png" style="width:5vw;height:5vw;" />Firefox</td>
-								<td><img src="/media/ie.png" style="width:5vw;height:5vw;" />IE</td>
-								<td><img src="/media/safari.png" style="width:5vw;height:5vw;" />Safari</td>
-								<td><img src="/media/opera.png" style="width:5vw;height:5vw;" />Opera</td>
+						<table class="support">
+							<tr class="browsers">
+								<td><img src="/media/chrome.png" title="Chrome" alt="Chrome pony" /></td>
+								<td><img src="/media/firefox.png" title="firefox" alt="Firefox pony" /></td>
+								<td><img src="/media/ie.png" alt="Internet Explorer" alt="Internet Explorer pony" /></td>
+								<td><img src="/media/safari.png" title="Safari" alt="Safari Pony" /></td>
+								<td><img src="/media/opera.png" title="Opera" alt="Opera Pony" /></td>
 							</tr>
 							<tr>
 								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
@@ -345,12 +343,12 @@ window.addEventListener("devicelight", function (event) {
 								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
 								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
 							</tr>
-							<tr>
-								<td><img src="/media/android.png" style="width:5vw;height:5vw;" /><br />Android</td>
-								<td><img src="/media/firefoxos.png" style="width:5vw;height:5vw;" /><br />Firefox OS</td>
-								<td><img src="/media/mobileie.png" style="width:5vw;height:5vw;" /><br />Mobile IE</td>
-								<td><img src="/media/ios.png" style="width:5vw;height:5vw;" /><br />iOS</td>
-								<td><img src="/media/operamini.png" style="width:5vw;height:5vw;" /><br />Opera Mini</td>
+							<tr class="browsers-mobile">
+								<td><img src="/media/android.png" title="Android" alt="" /></td>
+								<td><img src="/media/firefoxos.png" title="FirefoxOS" alt="" /></td>
+								<td><img src="/media/mobileie.png" title="Mobile IE" alt="" /></td>
+								<td><img src="/media/ios.png" title="iOS" alt="" /></td>
+								<td><img src="/media/operamini.png" title="Opera Mini" alt="" /></td>
 							</tr>
 							<tr>
 								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
@@ -378,18 +376,24 @@ window.addEventListener("devicelight", function (event) {
 						<p class="fragment roll-in">Device Orientation</p>
 						<p class="fragment roll-in">Screen Orientation</p>
 						<p class="fragment roll-in">Vibration</p>
-						<p class="fragment roll-in">Proximity</p>
-						<p class="fragment roll-in">Battery Status</p>
+						
 					</section>
 
 					<section>
 						<h2>...and more</h2>
+						<p class="fragment roll-in">Proximity</p>
+						<p class="fragment roll-in">Battery Status</p>
 						<p class="fragment roll-in">Push Notifications</p>
 						<p class="fragment roll-in">Network Information</p>
 						<p class="fragment roll-in">File System</p>
 						<p class="fragment roll-in">Clipboard</p>
 						<p class="fragment roll-in">Web Speech</p>
 						<p class="fragment roll-in">Full Screen</p>
+						
+					</section>
+
+					<section>
+						<h2>...and even more</h2>
 						<p class="fragment roll-in">Notifications</p>
 						<p class="fragment roll-in">Gamepad</p>
 						<p class="fragment roll-in">Alarm</p>
@@ -405,69 +409,15 @@ window.addEventListener("devicelight", function (event) {
 					<section>
 						<h2>Go and have a play :)</h2>
 						<p>Thank you</p>
-						<p>Slides:Thank you</p>
-						<p>Demo:Thank you</p>
-						<p>Webapis:Thank you</p>
+						<p>Slides: <a href="http://rumyras-talks.herokuapp.com/web-apis-space-time/#/">rumyras-talks.herokuapp.com</a></p>
+						<p>Demo: <a href="https://space-time-apis.herokuapp.com/">space-time-apis.herokuapp.com</a></p>
+						<p>Webapis:</p>
 					</section>
-
-
-
-				<section>
-					<!-- cut out code -->
-					<p>Control volume</p>
-					<pre><code data-trim contenteditable>
-//Control volume
-myAudioContext.createGain();
-					</code></pre>
-
-					<p class="fragment roll-in">Create filters</p>
-					<pre class="fragment roll-in"><code data-trim contenteditable>
-//Create filter
-myAudioContext.createBiquadFilter();
-					</code></pre>
-
-					<p class="fragment roll-in">Create sound</p>
-					<pre class="fragment roll-in"><code data-trim contenteditable>
-//Create sound
-myAudioContext.createOscillator();
-					</code></pre>
-					<p class="fragment roll-in">The <a href="http://chimera.labs.oreilly.com/books/1234000001552/index.html">Web Audio API O'Reilly book</a> by Boris Smus is free to read online!</p>
-					<aside class="notes">
-						You can do lots of things with the web audio API.
-						Simple
-							start/stop
-							volume
-						More complex things like add filters to the wave form
-						You can even create your own sounds
-						THE O'REILLY BOOK IS FREE!
-						For my POC I want to focus on analysing the waveform ->
-					</aside>
-				</section>
-
-				<section>
-					<h2>Analysing</h2>
-					<p class="fragment roll-in">We can do that :D</p>
-					<pre class="fragment roll-in"><code data-trim contenteditable>
-//create instance
-var analyser = myAudioContext.createAnalyser();
-
-//get data
-analyser.getByteFrequencyData();
-analyser.getFloatFrequencyData();
-analyser.getByteTimeDomainData();
-					</code></pre>
-					<aside class="notes">
-						You can analyse an audio context using the web audio api by creating an analyser node
-						That then gives you methods for frequency and time data - brilliant just what we need
-						I want frequency
-					</aside>
-				</section>
 
 				<section>
 					<h2>Credits</h2>
 					<p>Borwser Logos: https://github.com/alrra/browser-logos</p>
 					<p>Golden Condor Artwork: http://emanon01.deviantart.com/art/The-golden-condor-3d-174093696</p>
-
 				</section>
 
 				</section>
@@ -489,7 +439,7 @@ analyser.getByteTimeDomainData();
 				center: true,
 
 				// theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				theme: 'serif',
+				theme: 'white',
 				// transition: Reveal.getQueryHash().transition || 'default',
 				// default/cube/page/concave/zoom/linear/fade/none
 				transition: 'fade',

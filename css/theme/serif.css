@@ -38,7 +38,7 @@ body {
   margin: 0 0 20px 0;
   color: #383d3d;
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif;
-  line-height: 1.2em;
+  line-height: 0.9em;
   letter-spacing: 0.02em;
   text-transform: none;
   text-shadow: none; }
@@ -136,3 +136,22 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: #51483d; }
+
+.reveal .slides > section > section .support {
+  width: 90vw;
+  margin: 0px auto 0px -10vw;
+  font-size: 80%; }
+  .reveal .slides > section > section .support td {
+    padding: 0px;
+    text-align: center; }
+  .reveal .slides > section > section .support img {
+    margin: 0px;
+    border: none;
+    box-shadow: none; }
+  .reveal .slides > section > section .support .browsers td img {
+    width: 10vw;
+    height: auto; }
+  .reveal .slides > section > section .support .browsers-mobile td img {
+    width: 5vw;
+    height: auto;
+    padding-top: 20px; }

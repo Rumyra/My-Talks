@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,700,300italic,700italic);
 /**
  * Blood theme for reveal.js
  * Author: Walther http://github.com/Walther
@@ -10,6 +9,7 @@
  * For other themes, change $codeBackground accordingly.
  *
  */
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,700,300italic,700italic);
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -145,6 +145,25 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: #aa2233; }
+
+.reveal .slides > section > section .support {
+  width: 90vw;
+  margin: 0px auto 0px -10vw;
+  font-size: 80%; }
+  .reveal .slides > section > section .support td {
+    padding: 0px;
+    text-align: center; }
+  .reveal .slides > section > section .support img {
+    margin: 0px;
+    border: none;
+    box-shadow: none; }
+  .reveal .slides > section > section .support .browsers td img {
+    width: 10vw;
+    height: auto; }
+  .reveal .slides > section > section .support .browsers-mobile td img {
+    width: 5vw;
+    height: auto;
+    padding-top: 20px; }
 
 .reveal p {
   font-weight: 300;
