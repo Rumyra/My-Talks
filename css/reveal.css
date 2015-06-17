@@ -319,7 +319,7 @@ body {
 .reveal pre {
 	display: block;
 	position: relative;
-	width: 90%;
+	width: 100%;
 	margin: 15px auto;
 
 	text-align: left;
@@ -335,10 +335,12 @@ body {
 	font-family: monospace;
 }
 .reveal pre code {
-	padding: 5px;
+	padding: 15px;
 	overflow: auto;
 	max-height: 400px;
-	word-wrap: normal;
+	word-wrap: break-word;
+	font-size: 124%;
+	line-height: 1.4;
 }
 .reveal pre.stretch code {
 	height: 100%;

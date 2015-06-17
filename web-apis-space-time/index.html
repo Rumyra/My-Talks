@@ -8,6 +8,7 @@
 
 		<meta name="description" content="A talk about Web APIs">
 		<meta name="author" content="Ruth John">
+		<link rel="shortcut icon" href="../favicon.ico" />
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -98,7 +99,6 @@ var watchID = navigator.geolocation.watchPosition(function(position) {
 
 </code></pre>
 					<p>Register a handler function that will be called automatically each time the position of the device changes.</p>
-					<p>Returns unique ID to identify position watcher</p>
 					</section>
 
 					<section>
@@ -155,9 +155,10 @@ var watchID = navigator.geolocation.watchPosition(function(position) {
 					<section>
 						<h2>Web Animation API</h2>
 						<pre><code data-trim contenteditable>
-condor.animate([
-  {opacity: '1', transform: 'translate(-200px, 0px)'},
-  {opacity: '1', transform: 'translate(1200px, -700px)'}
+mario.animate([
+    {opacity: '1', transform: 'translate(200px, 0px)'},
+    {opacity: '1', transform: 'translate(200px, -500px)'},
+    {opacity: '1', transform: 'translate(200px, 0px)'}
   ], {
     duration: 2500,
     iterations: 1,
@@ -222,6 +223,7 @@ condor.animate([
 						<h2>Resources</h2>
 						<p><a href="http://w3c.github.io/web-animations/">W3C Editor's Draft</a></p>
 						<p><a href="http://rachelnabors.com/waapi/">Resources from Rachel Nabors</a></p>
+						<p>Also follow <a href="http://valhead.com">Val Head</a></p>
 						<p><a href="http://updates.html5rocks.com/2014/05/Web-Animations---element-animate-is-now-in-Chrome-36">HTML5 Rocks Article</a></p>
 						<p><a href="https://github.com/web-animations/web-animations-js">Polyfill</a></p>
 					</section>
@@ -255,15 +257,19 @@ var delay = audioCtx.createDelay();
 
 // set delay time
 delay.delayTime.value = 0.3;
+						</code></pre>
+					</section>
 
-// connect everything together & play
+					<section>
+						<h2>Web Audio Code</h2>
+						<pre><code data-trim contenteditable>// connect everything together & play
 source.connect(delay);
 source.connect(audioCtx.destination);
 delay.connect(audioCtx.destination);
 soundEl.play();
 
 						</code></pre>
-					</section>
+					</section>					
 
 					<section>
 						<h2>Support</h2>
@@ -338,7 +344,7 @@ window.addEventListener("devicelight", function (event) {
 								<td><img src="/media/opera.png" title="Opera" alt="Opera Pony" /></td>
 							</tr>
 							<tr>
-								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat liono" style="width:12vw;height:9vw;" /></td>
 								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
 								<td><img src="/media/mumra.png" alt="Profile image of mumra" style="width:12vw;height:9vw;" /></td>
 								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
@@ -403,7 +409,6 @@ window.addEventListener("devicelight", function (event) {
 
 					<section>
 						<h2>I'm making a website...</h2>
-						<p class="fragment roll-in">...with Ben</p>
 						<p class="fragment roll-in">Listing API's, with code examples & resources.</p>
 						<p class="fragment roll-in">Currently taking URL suggestions</p>
 					</section>
@@ -419,7 +424,6 @@ window.addEventListener("devicelight", function (event) {
 				<section>
 					<h2>Credits</h2>
 					<p>Browser Logos: https://github.com/alrra/browser-logos</p>
-					<p>Golden Condor Artwork: http://emanon01.deviantart.com/art/The-golden-condor-3d-174093696</p>
 				</section>
 
 				</section>
@@ -448,12 +452,12 @@ window.addEventListener("devicelight", function (event) {
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 
