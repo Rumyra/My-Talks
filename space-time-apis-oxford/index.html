@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Talk | A journey through Web API's Space & Time</title>
+
+		<meta name="description" content="A talk about Web APIs">
+		<meta name="author" content="Ruth John">
+		<link rel="shortcut icon" href="../favicon.ico" />
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../css/reveal.min.css">
+		<link rel="stylesheet" href="../css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<section>
+						<h1>Web APIs</h1>
+						<h2>A Journey Through Space & Time</h2>
+					</section>
+
+					<section>
+						<h2>Hello</h2>
+						<p>I'm Ruth</p>
+						<p>@rumyra</p>
+						<p>I do Web</p>
+						<aside class="notes">
+							What we do in the Lab - Proof of Concept
+						</aside>
+					</section>
+
+					<section>
+						<h2>Use 'Web API's' a lot - but what are they?</h2>
+						<p class="fragment roll-in">Collective term for new browser API's</p>
+						<p class="fragment roll-in">Also known as Browser API's</p>
+						<p class="fragment roll-in">Also known as Device API's</p>
+						<p class="fragment roll-in">Also known as HTML5 API's<span class="fragment"> (blergh)</span></p>
+						<p class="fragment roll-in">Or simply JavaScript APIs</p>
+					</section>
+
+					<section>
+						<h2>I like 'Client Side Web API's'</h2>
+						<p class="fragment roll-in">Or CSWAPI's if you will</p>
+						<p class="fragment roll-in">New functionality - HTML5 & native influence... goes beyond</p>
+					</section>
+
+					<section>
+						<h2>Let's start with the familiar</h2>
+						<p class="fragment roll-in">Geolocation API</p>
+						<p class="fragment roll-in">Demo</p>
+					</section>
+
+					<section>
+						<h2>Geolocation Code</h2>
+						<pre><code data-trim contenteditable>
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function (position) {
+    setCenter.lat = position.coords.latitude;
+    setCenter.lng = position.coords.longitude;
+    console.log(setCenter);
+  });
+} else {
+  console.warn('sorry, geolocation not supported');
+}
+
+</code></pre>
+					</section>
+
+					<section>
+						<h2>Geolocation watch functionlity</h2>
+						<pre><code data-trim contenteditable>
+var watchID = navigator.geolocation.watchPosition(function(position) {
+  do_something(position.coords.latitude, position.coords.longitude);
+});
+
+</code></pre>
+					<p>Register a handler function that will be called automatically each time the position of the device changes.</p>
+					</section>
+
+					<section>
+						<h2>Cool links</h2>
+						<p><a href="http://www.sitepoint.com/find-a-route-using-the-geolocation-and-the-google-maps-api/">Getting Directions Using the Google Maps API</a></p>
+						<p><a href="http://robertnyman.com/html5/geolocation/current-location-and-directions.html">Robert Nyman on Geolocation API</a></p>
+						<p><a href="http://www.html5rocks.com/en/tutorials/geolocation/trip_meter/">A Simple Trip Meter using the Geolocation API</a></p>
+					</section>
+
+					<section>
+						<h2>Support</h2>
+						<img src="/media/thundercats.gif" style="width:70%;height:auto;" />
+					</section>
+
+					<section>
+						<h2>Geo Support</h2>
+						<table class="support">
+							<tr class="browsers">
+								<td><img src="/media/chrome.png" title="Chrome" alt="Chrome pony" /></td>
+								<td><img src="/media/firefox.png" title="firefox" alt="Firefox pony" /></td>
+								<td><img src="/media/ie.png" alt="Internet Explorer" alt="Internet Explorer pony" /></td>
+								<td><img src="/media/safari.png" title="Safari" alt="Safari Pony" /></td>
+								<td><img src="/media/opera.png" title="Opera" alt="Opera Pony" /></td>
+							</tr>
+							<tr>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+							</tr>
+							<tr class="browsers-mobile">
+								<td><img src="/media/android.png" title="Android" alt="" /></td>
+								<td><img src="/media/firefoxos.png" title="FirefoxOS" alt="" /></td>
+								<td><img src="/media/mobileie.png" title="Mobile IE" alt="" /></td>
+								<td><img src="/media/ios.png" title="iOS" alt="" /></td>
+								<td><img src="/media/operamini.png" title="Opera Mini" alt="" /></td>
+							</tr>
+							<tr>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat Cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" style="width:12vw;height:9vw;" /></td>
+							</tr>
+						</table>
+						<p>See caniuse.com for more (subject to change)</p>
+					</section>
+
+					
+
+					<section>
+						<h2>Take a break</h2>
+					</section>
+
+					<section>
+						<h2>Web Animation API</h2>
+						<pre><code data-trim contenteditable>
+mario.animate([
+    {opacity: '1', transform: 'translate(200px, 0px)'},
+    {opacity: '1', transform: 'translate(200px, -500px)'},
+    {opacity: '1', transform: 'translate(200px, 0px)'}
+  ], {
+    duration: 2500,
+    iterations: 1,
+    delay: 300
+});
+
+</code></pre>
+					</section>
+
+					<section>
+						<h2>Web Animation API</h2>
+						<p class="fragment roll-in">Encompasses animations from CSS Animations, CSS Transitions & SVG Animations.</p>
+						<p class="fragment roll-in">More control:</p>
+						<ul>
+							<li class="fragment roll-in">Create animations</li>
+							<li class="fragment roll-in">Get playback state of animation</li>
+							<li class="fragment roll-in">Wait for animations to stop and remove them from the DOM</li>
+							<li class="fragment roll-in">Pause all existing animations</li>
+							<li class="fragment roll-in">Find out animations on a particular element</li>
+							<li class="fragment roll-in">Control timing of animations (Timing Model Layer)</li>
+							<li class="fragment roll-in">Half the speed of all animations</li>
+							<li class="fragment roll-in">Get all animations using a certain property (transform for example)</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Anim Support</h2>
+						<table class="support">
+							<tr class="browsers">
+								<td><img src="/media/chrome.png" title="Chrome" alt="Chrome pony" /></td>
+								<td><img src="/media/firefox.png" title="firefox" alt="Firefox pony" /></td>
+								<td><img src="/media/ie.png" alt="Internet Explorer" alt="Internet Explorer pony" /></td>
+								<td><img src="/media/safari.png" title="Safari" alt="Safari Pony" /></td>
+								<td><img src="/media/opera.png" title="Opera" alt="Opera Pony" /></td>
+							</tr>
+							<tr>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat Liono" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat Liono" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat Liono" style="width:12vw;height:9vw;" /></td>
+							</tr>
+							<tr class="browsers-mobile">
+								<td><img src="/media/android.png" title="Android" alt="" /></td>
+								<td><img src="/media/firefoxos.png" title="FirefoxOS" alt="" /></td>
+								<td><img src="/media/mobileie.png" title="Mobile IE" alt="" /></td>
+								<td><img src="/media/ios.png" title="iOS" alt="" /></td>
+								<td><img src="/media/operamini.png" title="Opera Mini" alt="" /></td>
+							</tr>
+							<tr>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat Liono" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat Mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat Mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" style="width:12vw;height:9vw;" /></td>
+							</tr>
+						</table>
+						<p>See caniuse.com for more (subject to change)</p>
+					</section>
+
+					<section>
+						<h2>Resources</h2>
+						<p><a href="http://w3c.github.io/web-animations/">W3C Editor's Draft</a></p>
+						<p><a href="http://rachelnabors.com/waapi/">Resources from Rachel Nabors</a> and <a href="http://valhead.com">Val Head</a></p>
+						<p><a href="http://updates.html5rocks.com/2014/05/Web-Animations---element-animate-is-now-in-Chrome-36">HTML5 Rocks Article</a></p>
+						<p><a href="https://github.com/web-animations/web-animations-js">Polyfill</a></p>
+					</section>
+
+					<section>
+						<h2>Space</h2>
+						<p>Demo</p>
+					</section>
+
+					<section>
+						<img src="/media/clangers.jpg" alt="the Clangers hanging out on the moon" />
+					</section>
+
+					<section>
+						<h2>Web Audio API</h2>
+					</section>
+
+					<section data-background="/media/magic.gif">
+				</section>
+
+					<section>
+						<h2>Web Audio API</h2>
+						<p class="fragment roll-in">Nodes (input, modification, analyser & output).</p>
+						<p class="fragment roll-in">Input node = &lt;audio> src</p>
+						<p class="fragment roll-in">Modification node = delay</p>
+						<p class="fragment roll-in">Output node = speakers</p>
+					</section>
+
+					<section>
+						<h2>Web Audio Code</h2>
+						<pre><code data-trim contenteditable>// create instance
+var audioCtx = new AudioContext,
+
+// input
+var audioSource = audioCtx.createMediaElementSource(soundEl),
+
+// new modification node
+var delay = audioCtx.createDelay();
+
+// set delay time
+delay.delayTime.value = 0.3;
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Web Audio Code</h2>
+						<pre><code data-trim contenteditable>// connect everything together & play
+source.connect(delay);
+source.connect(audioCtx.destination);
+delay.connect(audioCtx.destination);
+soundEl.play();
+
+						</code></pre>
+					</section>					
+
+					<section>
+						<h2>Support</h2>
+						<table class="support">
+							<tr class="browsers">
+								<td><img src="/media/chrome.png" title="Chrome" alt="Chrome pony" /></td>
+								<td><img src="/media/firefox.png" title="firefox" alt="Firefox pony" /></td>
+								<td><img src="/media/ie.png" alt="Internet Explorer" alt="Internet Explorer pony" /></td>
+								<td><img src="/media/safari.png" title="Safari" alt="Safari Pony" /></td>
+								<td><img src="/media/opera.png" title="Opera" alt="Opera Pony" /></td>
+							</tr>
+							<tr>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat liono" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+							</tr>
+							<tr class="browsers-mobile">
+								<td><img src="/media/android.png" title="Android" alt="" /></td>
+								<td><img src="/media/firefoxos.png" title="FirefoxOS" alt="" /></td>
+								<td><img src="/media/mobileie.png" title="Mobile IE" alt="" /></td>
+								<td><img src="/media/ios.png" title="iOS" alt="" /></td>
+								<td><img src="/media/operamini.png" title="Opera Mini" alt="" /></td>
+							</tr>
+							<tr>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat Mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat liono" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" style="width:12vw;height:9vw;" /></td>
+							</tr>
+						</table>
+						<p>See caniuse.com for more (subject to change)</p>
+					</section>
+
+					<section>
+						<h2>Resources</h2>
+						<p><a href="http://chimera.labs.oreilly.com/books/1234000001552/index.html">O'Reilly Web Audio API Book by Boris Smus (Free Online)</a></p>
+						<p><a href="http://www.html5rocks.com/en/tutorials/casestudies/jamwithchrome-audio/">Jam with Chrome article</a></p>
+						<p><a href="http://webaudiodemos.appspot.com/">Lots of demos - webaudiodemos.appspot.com</a></p>
+					</section>
+
+					<section>
+						<h2>Can we see...?</h2>
+					</section>
+
+					<section>
+						<h2>Ambient Light API</h2>
+						<p class="fragment roll-in">Really just an event.</p>
+						<p class="fragment roll-in">Super easy...</p>
+					</section>
+
+					<section>
+						<h2>Ambient Light Code</h2>
+						<pre><code data-trim contenteditable>
+// devicelight event
+window.addEventListener("devicelight", function (event) {
+  var luminosity = event.value;
+  console.log('light: '+luminosity);
+});
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Support</h2>
+						<table class="support">
+							<tr class="browsers">
+								<td><img src="/media/chrome.png" title="Chrome" alt="Chrome pony" /></td>
+								<td><img src="/media/firefox.png" title="firefox" alt="Firefox pony" /></td>
+								<td><img src="/media/ie.png" alt="Internet Explorer" alt="Internet Explorer pony" /></td>
+								<td><img src="/media/safari.png" title="Safari" alt="Safari Pony" /></td>
+								<td><img src="/media/opera.png" title="Opera" alt="Opera Pony" /></td>
+							</tr>
+							<tr>
+								<td><img src="/media/liono.png" alt="Profile image of thundercat liono" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
+							</tr>
+							<tr class="browsers-mobile">
+								<td><img src="/media/android.png" title="Android" alt="" /></td>
+								<td><img src="/media/firefoxos.png" title="FirefoxOS" alt="" /></td>
+								<td><img src="/media/mobileie.png" title="Mobile IE" alt="" /></td>
+								<td><img src="/media/ios.png" title="iOS" alt="" /></td>
+								<td><img src="/media/operamini.png" title="Opera Mini" alt="" /></td>
+							</tr>
+							<tr>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/cheetara.png" alt="Profile image of thundercat cheetara" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat Mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" alt="Profile image of thundercat mumra" style="width:12vw;height:9vw;" /></td>
+								<td><img src="/media/mumra.png" style="width:12vw;height:9vw;" /></td>
+							</tr>
+						</table>
+						<p>See caniuse.com for more (subject to change)</p>
+					</section>
+
+					<section>
+						<h2>Resources</h2>
+						<p><a href="http://www.sitepoint.com/mobile-web-superpowers-ambient-light-api/">Mobile Web Superpowers – Ambient Light API</a></p>
+					</section>
+
+					<section>
+						<h2>Web API's - there's more</h2>
+						<p class="fragment roll-in">Geolocation</p>
+						<p class="fragment roll-in">Web Animation</p>
+						<p class="fragment roll-in">Web Audio</p>
+						<p class="fragment roll-in">Ambient Light</p>
+						<p class="fragment roll-in">Media Stream</p>
+						<p class="fragment roll-in">Device Orientation</p>
+						<p class="fragment roll-in">Screen Orientation</p>
+						<p class="fragment roll-in">Vibration</p>
+						
+					</section>
+
+					<section>
+						<h2>...and more</h2>
+						<p class="fragment roll-in">Proximity</p>
+						<p class="fragment roll-in">Battery Status</p>
+						<p class="fragment roll-in">Push Notifications</p>
+						<p class="fragment roll-in">Network Information</p>
+						<p class="fragment roll-in">File System</p>
+						<p class="fragment roll-in">Clipboard</p>
+						<p class="fragment roll-in">Web Speech</p>
+						<p class="fragment roll-in">Full Screen</p>
+						
+					</section>
+
+					<section>
+						<h2>...and even more</h2>
+						<p class="fragment roll-in">Notifications</p>
+						<p class="fragment roll-in">Gamepad</p>
+						<p class="fragment roll-in">Alarm</p>
+						<p class="fragment roll-in">Pointer Lock</p>
+						<p class="fragment roll-in">NOT a definitive list</p>
+					</section>
+
+					<section>
+						<h2>But when am I going to use these?</h2>
+						<p class="fragment roll-in">Ambient Light change contrast</p>
+						<p class="fragment roll-in">Vibration give haptic feedback</p>
+						<p class="fragment roll-in">Audio, similarly, can give accessible auditory feedback</p>
+						<p class="fragment roll-in">Geolocation can enhance information sevices</p>
+						<p class="fragment roll-in">Tailor your web builds, progressively enhance them</p>
+					</section>
+
+					<section>
+						<h2>Winamp</h2>
+						<img src="/media/WinAmp.gif" style="display:block;margin:0px auto;" />
+						<audio controls  style="display:block;margin:0px auto;">
+							<source src="/media/llama.mp3" type="audio/mp3" />
+						</audio>
+					</section>
+
+					<section>
+						<img src="/media/winampViz.jpg" style="display:block;margin:0px auto;" />
+ 						<aside class="notes">
+ 							Winamp visualise inspired me - I used to go into clubs & venues with projector.
+ 						</aside>
+					</section>
+
+
+					<section>
+						<h2>I'm making a website...</h2>
+						<p class="fragment roll-in">Listing API's, with code examples & resources.</p>
+						<p class="fragment roll-in">Currently taking URL suggestions</p>
+					</section>
+
+					<section>
+						<h2>Go and have a play :)</h2>
+						<p>Thank you</p>
+						<p>Slides: <a href="http://rumyras-talks.herokuapp.com/web-apis-space-time/#/">rumyras-talks.herokuapp.com</a></p>
+						<p>Demo: <a href="https://space-time-apis.herokuapp.com/">space-time-apis.herokuapp.com</a></p>
+						<p>Webapis: <a href="https://github.com/Rumyra/web-apis">https://github.com/Rumyra/web-apis</a></p>
+					</section>
+
+				<section>
+					<h2>Credits</h2>
+					<p>Browser Logos: https://github.com/alrra/browser-logos</p>
+				</section>
+
+				</section>
+			</div>
+
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				// theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				theme: 'white',
+				// transition: Reveal.getQueryHash().transition || 'default',
+				// default/cube/page/concave/zoom/linear/fade/none
+				transition: 'fade',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
