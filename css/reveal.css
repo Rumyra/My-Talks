@@ -236,6 +236,7 @@ body {
 .reveal iframe {
 	max-width: 95%;
 	max-height: 95%;
+	background: none;
 }
 
 /** Prevents layering issues in certain browser/transition combinations */
@@ -287,8 +288,8 @@ body {
 
 .reveal p {
 	margin-bottom: 10px;
-	line-height: 1.2em;
-	font-size: 120%;
+	line-height: 1.4em;
+	font-size: 140%;
 }
 
 .reveal q,
