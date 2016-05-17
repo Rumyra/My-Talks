@@ -340,7 +340,7 @@ body {
 	overflow: auto;
 	max-height: 400px;
 	word-wrap: break-word;
-	font-size: 124%;
+	font-size: 150%;
 	line-height: 1.4;
 }
 .reveal pre.stretch code {
